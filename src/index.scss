@@ -1,0 +1,25 @@
+@import "./components/styles/variables";
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    .logo {
+        color: $primary-color;
+        font-size: 36px;
+        font-weight: 400;
+    }
+    .links{
+        .link{
+            margin-right: 50px;
+            font-size: 22px;
+            color: #000;
+            text-decoration: none;
+        }
+    }
+}
+.info {
+    width: 40%;
+}
