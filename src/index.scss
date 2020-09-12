@@ -1,21 +1,24 @@
 @import "./components/styles/variables";
 
-
+$text-color: #49546b;
 .header {
     display: flex;
     justify-content: space-between;
     height: 100px;
     align-items: center;
     .logo {
-        color: $primary-color;
-        font-size: 36px;
-        font-weight: 400;
+        .logo-link {
+            text-decoration: none;
+            color: $primary-color;
+            font-size: 36px;
+            font-weight: 400;
+        }
     }
-    .links{
-        .link{
-            margin-right: 50px;
+    .links {
+        .link {
+            margin-right: 40px;
             font-size: 22px;
-            color: #000;
+            color: #49546b;
             text-decoration: none;
         }
     }
