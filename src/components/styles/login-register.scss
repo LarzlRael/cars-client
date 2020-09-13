@@ -8,43 +8,7 @@ $text-color: #49546b;
         margin: auto;
         padding: 2rem;
         border-radius: 5px;
-        .form-title {
-            text-align: center;
-            font-size: 1.8rem;
-            text-transform: capitalize;
-            font-weight: 500;
-            margin-bottom: 1.4rem;
-            color: $text-color;
-            span {
-                display: block;
-                margin-top: 0.5rem;
-                color: $primary-color;
-                text-transform: none;
-                font-size: 1.5rem;
-            }
-        }
-        .grupo-label {
-            label {
-                font-size: 1.3rem;
-                font-weight: 500;
-                margin-bottom: 10px;
-                display: block;
-                color: $text-color;
-            }
-            .input {
-                margin-bottom: 2rem;
-                box-sizing: border-box;
-                display: block;
-                width: 100%;
-                padding: 20px;
-                border: 1px solid #ccc;
-                font-size: 1.2rem;
-                color: $text-color;
-                &:focus {
-                    border: 1px solid $primary-color;
-                }
-            }
-        }
+
         .group-button {
             width: 100%;
             .login-button {
@@ -58,7 +22,6 @@ $text-color: #49546b;
                 border: none;
                 &:hover {
                     cursor: pointer;
-                    
                 }
             }
         }
@@ -71,4 +34,73 @@ $text-color: #49546b;
             }
         }
     }
+}
+
+.grupo-label {
+    label {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+        display: block;
+        color: $text-color;
+    }
+    .input {
+        margin-bottom: 2rem;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        font-size: 1.2rem;
+        color: $text-color;
+        &:focus {
+            border: 1px solid $primary-color;
+        }
+    }
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 1.4rem;
+    color: $text-color;
+    span {
+        display: block;
+        margin-top: 0.5rem;
+        color: $primary-color;
+        text-transform: none;
+        font-size: 1.5rem;
+    }
+}
+
+.login-button {
+    width: 100%;
+    color: white;
+    background-color: $primary-color;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.google-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.form-register {
+    border: 3px solid #e9ecef;
+    padding: 2rem;
+    width: 60%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0;
+    column-gap: 2rem;
 }
