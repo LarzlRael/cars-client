@@ -1,4 +1,4 @@
-import { SIGN_IN_FAIL, SIGN_IN_SUCCESS, SIGN_UP, GOOGLE_SIGN_IN, LOG_OUT, GET_USER } from "../../types";
+import { SIGN_IN_FAIL, SIGN_IN_SUCCESS, SIGN_UP, GOOGLE_SIGN_IN, LOG_OUT, GET_USER, REGISTER_FAIL, REGISTER } from "../../types";
 
 
 export default (state, action) => {
@@ -38,7 +38,7 @@ export default (state, action) => {
                 token: null,
                 autenticado: null,
                 cargando: false,
-                
+
             }
 
         case GOOGLE_SIGN_IN:
@@ -51,6 +51,21 @@ export default (state, action) => {
                 mensaje: null,
                 cargando: false
 
+            }
+        case REGISTER:
+            return {
+                ...state,
+                mensaje: action.payload,
+                registro_exitoso: true
+
+            }
+        case REGISTER_FAIL:
+
+            localStorage.removeItem('token');
+            return {
+                ...state,
+                mensaje: action.payload,
+                registro_exitoso: false
             }
         default:
             return state;

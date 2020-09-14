@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 //? context
 import LoginContext from './LoginContext';
 
-import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER } from '../../types';
+import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER, REGISTER, REGISTER_FAIL } from '../../types';
 import loginReducer from './loginReducer';
 
 import clienteAxios from '../../config/axios';
@@ -17,7 +17,8 @@ const LoginState = props => {
         token: localStorage.getItem('token'),
         autenticado: null,
         mensaje: null,
-        cargando: true
+        cargando: true,
+        registro_exitoso: false
 
     }
     //? crear  el distpach y el state
@@ -41,6 +42,34 @@ const LoginState = props => {
                 type: SIGN_IN_FAIL,
                 payload: 'ERROR'
             })
+        }
+    }
+
+    const register = async (user) => {
+        try {
+            const resultado = await clienteAxios.post(`/users/newuser`, user)
+                .catch((error) => {
+                    // console.log(e)
+                    console.log(error.response.data.error);
+                    dispatch({
+                        type: REGISTER_FAIL,
+                        payload: error.response.data.error
+                    });
+                });
+            console.log(resultado.data)
+            dispatch({
+                type: REGISTER,
+                payload: 'Registro realizado correctamente'
+            });
+
+        } catch (error) {
+            // console.log('error al registrarse', error.error)
+
+            // dispatch({
+            //     type: SIGN_IN_FAIL,
+            //     payload: 'ERROR'
+
+            // })
         }
     }
 
@@ -98,11 +127,15 @@ const LoginState = props => {
                 //? states
                 user: state.user,
                 autenticado: state.autenticado,
+                mensaje: state.mensaje,
+                registro_exitoso: state.registro_exitoso,
+
                 //* funciones
                 sign_in,
                 google_singin,
                 cerrarSesion,
-                authUser
+                authUser,
+                register
             }}
         >
             {props.children}

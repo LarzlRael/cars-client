@@ -27,9 +27,10 @@ const Header = () => {
             <div className="links">
                 <Link to="/" className="link">Home</Link>
                 <Link to="/cars" className="link">Ver automoviles</Link>
-                <a href="#" className="link">About us</a>
-                <a href="#" className="link">Precios</a>
-                <a href="#" className="link">{autenticado ? user.user_name : 'Registrarse'}</a>
+                <Link to="/cars" className="link">opcion1</Link>
+                <Link to="/cars" className="link">opcion2</Link>
+
+                <Link className="link">{autenticado ? user.user_name : 'Registrarse'}</Link>
 
 
                 {autenticado ? <a className="link" onClick={logout}>Cerrar Sesion</a> :

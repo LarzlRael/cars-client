@@ -45,16 +45,28 @@ $text-color: #49546b;
         color: $text-color;
     }
     .input {
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
         box-sizing: border-box;
         display: block;
         width: 100%;
         padding: 20px;
-        border: 1px solid #ccc;
         font-size: 1.2rem;
         color: $text-color;
+        border: 1px solid #ccc;
         &:focus {
             border: 1px solid $primary-color;
+        }
+    }
+    .input-error {
+        // margin-bottom: 2rem;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-size: 1.2rem;
+        border: 1px solid red;
+        &:focus {
+            border: 1px solid red;
         }
     }
 }
@@ -103,4 +115,15 @@ $text-color: #49546b;
     grid-template-columns: 1fr 1fr;
     row-gap: 0;
     column-gap: 2rem;
+}
+
+.error-message {
+    margin-bottom: 0.5rem;
+    color: red;
+    padding: 3px;
+}
+.message-success {
+    margin-bottom: 0.5rem;
+    color: $primary-color;
+    padding: 3px;
 }
