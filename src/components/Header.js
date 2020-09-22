@@ -30,10 +30,10 @@ const Header = () => {
                 <Link to="/cars" className="link">opcion1</Link>
                 <Link to="/cars" className="link">opcion2</Link>
 
-                <Link className="link">{autenticado ? user.user_name : 'Registrarse'}</Link>
+                <Link className="link">{autenticado ? user.name : 'Registrarse'}</Link>
 
 
-                {autenticado ? <a className="link" onClick={logout}>Cerrar Sesion</a> :
+                {autenticado ? <Link className="link" to="" onClick={logout}>Cerrar Sesion</Link> :
                     <Link to="/login" className="link">Iniciar sesion</Link>}
 
 

@@ -194,8 +194,8 @@ const Register = () => {
                     <label htmlFor="" >¿Ya tienes Cuenta?</label> <Link className="register" to="/login">Iniciar Sesion</Link>
                     {mensaje ? <h4 className={registro_exitoso ? 'message-success' : 'error-message'}>{mensaje}
                         {registro_exitoso ?
-                            <i class="fas fa-check"></i> :
-                            <i class="fas fa-times"></i>}
+                            <i className="fas fa-check"></i> :
+                            <i className="fas fa-times"></i>}
                     </h4> : null}
                 </div>
 

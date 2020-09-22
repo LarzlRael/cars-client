@@ -102,16 +102,19 @@ const LoginState = props => {
 
         const token = localStorage.getItem('token');
         if (token) {
-            console.log('hay token')
+            //console.log('hay token')
             tokenAuth(token);
         }
 
         try {
-            const respuesta = await clienteAxios.get('login/getuser');
-            console.log(respuesta);
+            //console.log('solicitando usuario');
+            const respuesta =  (await clienteAxios.get('login/getuser')).data;
+
+            //console.log(respuesta);
+
             dispatch({
                 type: GET_USER,
-                payload: respuesta.data
+                payload: respuesta.userdb
             })
 
         } catch (error) {
