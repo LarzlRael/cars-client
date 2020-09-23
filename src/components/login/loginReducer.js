@@ -11,7 +11,8 @@ export default (state, action) => {
                 ...state,
                 autenticado: true,
                 mensaje: null,
-                cargando: false
+                cargando: false,
+                mensaje_login_error: null
 
             }
         case SIGN_UP:
@@ -26,24 +27,25 @@ export default (state, action) => {
                 ...state,
                 autenticado: true,
                 user: action.payload,
-                cargando: false
+                cargando: false,
+                mensaje: null,
+
             }
 
         case SIGN_IN_FAIL:
         case LOG_OUT:
             localStorage.removeItem('token');
-            console.log('cerrando sesion reducer')
+            console.log('error del servidor ' + action.payload)
             return {
                 ...state,
                 token: null,
                 autenticado: null,
                 cargando: false,
-
+                mensaje_login_error: action.payload
             }
 
         case GOOGLE_SIGN_IN:
             localStorage.setItem('token', action.payload.jwt_token);
-            console.log(action.payload.jwt_token)
             return {
                 ...state,
                 user: action.payload.userdb,

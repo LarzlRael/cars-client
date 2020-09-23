@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 
 import "./styles/login-register.scss"
 import LoginContext from './login/LoginContext';
+import ErrorLabel from './error-label';
+
 const Login = () => {
 
     const loginContext = useContext(LoginContext);
 
-    const { sign_in, google_singin } = loginContext;
+    const { sign_in, google_singin, mensaje_login_error } = loginContext;
 
     const [user, setUser] = useState({
         email: '',
@@ -92,6 +94,7 @@ const Login = () => {
                 </div>
 
 
+                {mensaje_login_error ? <ErrorLabel message={mensaje_login_error} /> : ''}
 
             </form>
         </div>

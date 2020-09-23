@@ -17,6 +17,7 @@ const LoginState = props => {
         token: localStorage.getItem('token'),
         autenticado: null,
         mensaje: null,
+        mensaje_login_error: null,
         cargando: true,
         registro_exitoso: false
 
@@ -29,7 +30,7 @@ const LoginState = props => {
         console.log(user);
         try {
             const resultado = await clienteAxios.post(`/login`, { email: user.email, password: user.password });
-            console.log(resultado.data);
+
             dispatch({
                 type: SIGN_IN_SUCCESS,
                 payload: resultado.data
@@ -38,9 +39,10 @@ const LoginState = props => {
             authUser();
 
         } catch (error) {
+            console.log(error)
             dispatch({
                 type: SIGN_IN_FAIL,
-                payload: 'ERROR'
+                payload: error.response.data.error
             })
         }
     }
@@ -108,7 +110,7 @@ const LoginState = props => {
 
         try {
             //console.log('solicitando usuario');
-            const respuesta =  (await clienteAxios.get('login/getuser')).data;
+            const respuesta = (await clienteAxios.get('login/getuser')).data;
 
             //console.log(respuesta);
 
@@ -132,6 +134,7 @@ const LoginState = props => {
                 autenticado: state.autenticado,
                 mensaje: state.mensaje,
                 registro_exitoso: state.registro_exitoso,
+                mensaje_login_error: state.mensaje_login_error,
 
                 //* funciones
                 sign_in,
