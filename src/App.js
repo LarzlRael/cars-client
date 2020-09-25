@@ -10,6 +10,8 @@ import Cars from './components/cars';
 import CarState from './components/cars/carState';
 import Car_info from './components/car-info';
 import LoginState from './components/login/loginState';
+import AdminLogin from './components/adminComponents/AdminLogin';
+import AdminDashboard from './components/adminComponents/adminDashboard';
 
 
 function App() {
@@ -28,6 +30,15 @@ function App() {
             </Switch>
             <Route path="/login" component={Layout} />
             <Route path="/register" component={Layout} />
+            {/* //? Admin Routes */}
+            <Switch>
+              <Route path="/admin/dashboard" component={AdminDashboard} />
+              <Route path="/admin" component={AdminLogin} />
+              <Route path="/loginadmin/users" exact component={AdminLogin} />
+
+              <Route path="/loginadmin/new-car" component={AdminLogin} />
+            </Switch>
+
 
           </Router>
         </div>

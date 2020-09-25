@@ -6,9 +6,11 @@ import Footer from './Footer';
 import Login from './login';
 import Register from './register';
 import Image from './image';
+import AdminLogin from './adminComponents/AdminLogin';
 
 const Layout = () => {
     return (
+
         <Router>
 
             <div className="layout">
@@ -37,6 +39,7 @@ const Layout = () => {
                 <Route path="/" exact component={Image} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                
 
             </div>
 

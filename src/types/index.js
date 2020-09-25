@@ -11,3 +11,6 @@ export const REGISTER_FAIL = ' REGISTER_FAIL';
 export const GOOGLE_SIGN_IN = 'GOOGLE_SIGN_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const GET_USER = 'GET_USER';
+
+export const LOGIN_ADMIN = 'LOGIN_ADMIN';
+

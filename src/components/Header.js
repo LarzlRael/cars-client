@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import LoginContext from './login/LoginContext'
+import SimpleMenu from './MenuProfile';
 
 
 const Header = () => {
@@ -27,15 +28,16 @@ const Header = () => {
             <div className="links">
                 <Link to="/" className="link">Home</Link>
                 <Link to="/cars" className="link">Ver automoviles</Link>
-                <Link to="/cars" className="link">opcion1</Link>
-                <Link to="/cars" className="link">opcion2</Link>
-
-                <Link className="link">{autenticado ? user.name : 'Registrarse'}</Link>
+                <Link to="/admin" className="link">Ver Admin</Link>
 
 
-                {autenticado ? <Link className="link" to="" onClick={logout}>Cerrar Sesion</Link> :
-                    <Link to="/login" className="link">Iniciar sesion</Link>}
+                {!autenticado ?
+                <Link to="/login" className="link">Iniciar sesion</Link>:
+                    null}
 
+                {autenticado ?
+                    <SimpleMenu userName={user.name} lastName={user.last_name} logout={logout} /> : null
+                }
 
             </div>
         </header>

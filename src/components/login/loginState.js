@@ -126,6 +126,29 @@ const LoginState = props => {
         }
 
     }
+
+    const adminLogin = async (user) => {
+
+        console.log(user);
+        try {
+            const resultado = await clienteAxios.post('/login/loginadmin', { email: user.email, password: user.password });
+
+            dispatch({
+                type: SIGN_IN_SUCCESS,
+                payload: resultado.data
+            });
+
+            authUser();
+
+        } catch (error) {
+            console.log(error)
+            dispatch({
+                type: SIGN_IN_FAIL,
+                payload: error.response.data.error
+            })
+        }
+    }
+
     return (
         <LoginContext.Provider
             value={{
@@ -141,7 +164,8 @@ const LoginState = props => {
                 google_singin,
                 cerrarSesion,
                 authUser,
-                register
+                register,
+                adminLogin
             }}
         >
             {props.children}
