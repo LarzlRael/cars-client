@@ -1,6 +1,8 @@
 $primary-color: #01c8b3;
 $secondary-color: #ff4453;
 $color-text: #49546b;
+$dash-background: #2b2f48;
+$dash-title-color: #424869;
 
 .login-div {
     display: flex;
@@ -9,7 +11,7 @@ $color-text: #49546b;
     height: 500px;
     -webkit-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
     -moz-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
-    box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
+    box-shadow: -2px 6px 9px 1px rgba(160, 145, 147, 1);
     .form {
         display: flex;
         justify-content: center;
@@ -33,14 +35,14 @@ $color-text: #49546b;
                 padding: 10px;
                 color: $color-text;
                 font-size: 1.1em;
+                border: 1px solid #ccc;
                 &:focus {
-                    border: 2px solid $primary-color;
+                    border: 1px solid $primary-color;
                 }
                 &.error {
                     color: red;
-                    border: 2px solid red;
+                    border: 1px solid red;
                 }
-                
             }
             .button-login {
                 display: block;
@@ -76,6 +78,46 @@ $color-text: #49546b;
         span {
             color: #fff;
             font-size: 1rem;
+        }
+    }
+}
+
+.dashboard {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 100vh;
+    height: 100%;
+    .dash {
+        color: white;
+        background: $dash-background;
+
+        .dash-group {
+            padding-bottom: 1rem;
+            .dash-item {
+                display: block;
+                color: white;
+
+                margin: 0;
+                padding: 1rem 1rem 0.5rem 2rem;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 0.8rem;
+                text-transform: capitalize;
+                cursor: pointer;
+                transition: 0.2s ease all;
+                &:hover {
+                    background: $dash-title-color;
+                    border-left: 5px solid $primary-color;
+                }
+            }
+        }
+        .title-dash {
+            padding: 1.5rem;
+            color: #424869;
+            font-weight: 400;
+            font-size: 0.7rem;
+            text-transform: uppercase;
         }
     }
 }

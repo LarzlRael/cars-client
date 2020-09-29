@@ -3,9 +3,9 @@ import "./styles/cards-card.scss"
 import { Link } from 'react-router-dom'
 
 const Car = ({ car }) => {
-    const onClickHander = (name) => {
-        alert(name)
-    }
+    // const onClickHander = (name) => {
+    //     alert(name)
+    // }
 
     return (
         <div className="card-car">

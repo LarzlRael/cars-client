@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login';
 import { Link } from 'react-router-dom';
 
@@ -6,17 +6,26 @@ import "./styles/login-register.scss"
 import LoginContext from './login/LoginContext';
 import ErrorLabel from './error-label';
 
-const Login = () => {
+const Login = (props) => {
+
 
     const loginContext = useContext(LoginContext);
 
-    const { sign_in, google_singin, mensaje_login_error } = loginContext;
+    const { sign_in, google_singin, mensaje_login_error,autenticado} = loginContext;
+
+    useEffect(() => {
+
+        if (autenticado) {
+            props.history.push('/cars');
+        }
+        // eslint-disable-next-line
+    }, [autenticado])
 
     const [user, setUser] = useState({
-        email: '',
-        password: ''
+        email: 'xdxdxdxd@gmail.com',
+        password: '123456789'
     })
-    
+
     const { email, password } = user;
     const onChange = (e) => {
         setUser({

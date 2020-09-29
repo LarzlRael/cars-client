@@ -13,6 +13,7 @@ const Header = () => {
     console.log('autentcado: ', autenticado)
     useEffect(() => {
         authUser();
+       
     }, []);
 
     const logout = () => {
@@ -28,11 +29,10 @@ const Header = () => {
             <div className="links">
                 <Link to="/" className="link">Home</Link>
                 <Link to="/cars" className="link">Ver automoviles</Link>
-                <Link to="/admin" className="link">Ver Admin</Link>
 
 
                 {!autenticado ?
-                <Link to="/login" className="link">Iniciar sesion</Link>:
+                    <Link to="/login" className="link">Iniciar sesion</Link> :
                     null}
 
                 {autenticado ?

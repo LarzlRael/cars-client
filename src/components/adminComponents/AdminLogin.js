@@ -1,19 +1,28 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ErrorLabel from '../error-label';
 import LoginContext from '../login/LoginContext';
 
 
 import "./login-admin-styles.scss"
 
-const AdminLogin = () => {
+const AdminLogin = (props) => {
     const loginContext = useContext(LoginContext);
 
-    const { adminLogin, mensaje_login_error } = loginContext;
+    const { adminLogin, mensaje_login_error, admin_auth } = loginContext;
+
+    useEffect(() => {
+        console.log('admin auto ', admin_auth);
+        
+        if (admin_auth) {
+            props.history.push('/admin/dashboard');
+        }
+        // eslint-disable-next-line
+    }, [admin_auth])
 
 
     const [userAdmin, setUserAdmin] = useState({
-        email: '',
-        password: ''
+        email: 'xdx@gmail.com',
+        password: '123456789'
     });
     //? Error state
     const [Error, setError] = useState({
@@ -40,7 +49,7 @@ const AdminLogin = () => {
             ...Error,
             error_message: null
         })
-        
+
     }
 
     return (

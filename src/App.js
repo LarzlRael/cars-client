@@ -13,6 +13,18 @@ import LoginState from './components/login/loginState';
 import AdminLogin from './components/adminComponents/AdminLogin';
 import AdminDashboard from './components/adminComponents/adminDashboard';
 
+//? rutas para proteger
+import RutaUserPrivada from './private_rutes/PrivateUserRoutes';
+import PrivateAdminRoutes from './private_rutes/PrivateAdminRoutes';
+
+
+import tokenAuth from './config/token_auth';
+import PrivateUserRoutes from './private_rutes/PrivateUserRoutes';
+
+const token = localStorage.getItem('token');
+if (token) {
+  tokenAuth(token);
+}
 
 function App() {
   return (
@@ -32,9 +44,15 @@ function App() {
             <Route path="/register" component={Layout} />
             {/* //? Admin Routes */}
             <Switch>
-              <Route path="/admin/dashboard" component={AdminDashboard} />
+              {/* <Route path="/admin/dashboard" component={AdminDashboard} />
+              <Route path="/admin/users" exact component={AdminLogin} /> */}
+
+              <PrivateAdminRoutes path="/admin/dashboard" component={AdminDashboard} />
+              <PrivateAdminRoutes path="/admin/users" component={AdminDashboard} />
+
+              <PrivateUserRoutes path="/proyects" component={Layout} />
+
               <Route path="/admin" component={AdminLogin} />
-              <Route path="/loginadmin/users" exact component={AdminLogin} />
 
               <Route path="/loginadmin/new-car" component={AdminLogin} />
             </Switch>
