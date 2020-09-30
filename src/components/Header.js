@@ -13,7 +13,7 @@ const Header = () => {
     console.log('autentcado: ', autenticado)
     useEffect(() => {
         authUser();
-       
+       // eslint-disable-next-line
     }, []);
 
     const logout = () => {

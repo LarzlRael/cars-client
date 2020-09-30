@@ -2,15 +2,13 @@ import React, { useReducer } from 'react';
 //? context
 import LoginContext from './LoginContext';
 
-import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER, REGISTER, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_ADMIN_SUCCESS, GET_ADMIN_USER } from '../../types';
+import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER, REGISTER, REGISTER_FAIL, LOGIN_ADMIN_SUCCESS, GET_ADMIN_USER } from '../../types';
 import loginReducer from './loginReducer';
 
 import clienteAxios from '../../config/axios';
 import tokenAuth from '../../config/token_auth';
-import { useHistory } from 'react-router-dom';
 
-
-const LoginState = props => {
+const LoginState = (props) => {
 
     //const { history } = props;
 
@@ -31,11 +29,9 @@ const LoginState = props => {
     //? crear  el distpach y el state
     const [state, dispatch] = useReducer(loginReducer, initialState);
 
-    const history = useHistory();
 
     const sign_in = async (user) => {
 
-        console.log(user);
 
         try {
             const resultado = await clienteAxios.post('/login', { email: user.email, password: user.password });
@@ -101,11 +97,13 @@ const LoginState = props => {
             })
         }
     }
-    //? functon to logout
+    //? function to logout
     const cerrarSesion = () => {
         dispatch({
             type: LOG_OUT,
-        })
+        });
+
+
     }
 
     const authUserAdmin = async () => {

@@ -12,6 +12,8 @@ const Car_info = (props) => {
     const id = props.match.params.id;
     useEffect(() => {
         getOneCar(id);
+        
+    // eslint-disable-next-line
     }, [mensaje])
 
 

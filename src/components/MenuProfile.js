@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-export default function SimpleMenu({ userName, lastName,logout }) {
+export default function SimpleMenu({ userName, lastName, logout }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {

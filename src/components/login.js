@@ -11,12 +11,13 @@ const Login = (props) => {
 
     const loginContext = useContext(LoginContext);
 
-    const { sign_in, google_singin, mensaje_login_error,autenticado} = loginContext;
+    const { sign_in, google_singin, mensaje_login_error, autenticado } = loginContext;
 
     useEffect(() => {
 
         if (autenticado) {
             props.history.push('/cars');
+            window.location.reload();
         }
         // eslint-disable-next-line
     }, [autenticado])
@@ -48,9 +49,9 @@ const Login = (props) => {
             google_singin(token);
         }
     }
-    const handleLoginFailure = (response) => {
-        alert('Failed to log in')
-    }
+    // const handleLoginFailure = (response) => {
+    //     alert('Failed to log in')
+    // }
 
 
     return (

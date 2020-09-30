@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginContext from '../login/LoginContext';
 import AdminProfile from './adminProfile';
 import AdminUsers from './adminUsers';
 
 import "./login-admin-styles.scss"
-const AdminDashboard = (props) => {
+const AdminDashboard = () => {
     const loginContext = useContext(LoginContext);
 
     const { cerrarSesion } = loginContext;

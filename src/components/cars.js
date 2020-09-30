@@ -18,7 +18,7 @@ const Cars = () => {
 
     useEffect(() => {
         getCars();
-
+// eslint-disable-next-line
     }, [mensaje])
 
     const fields = [

@@ -6,7 +6,6 @@ import Footer from './Footer';
 import Login from './login';
 import Register from './register';
 import Image from './image';
-import AdminLogin from './adminComponents/AdminLogin';
 
 const Layout = () => {
     return (

@@ -14,7 +14,7 @@ import AdminLogin from './components/adminComponents/AdminLogin';
 import AdminDashboard from './components/adminComponents/adminDashboard';
 
 //? rutas para proteger
-import RutaUserPrivada from './private_rutes/PrivateUserRoutes';
+//import RutaUserPrivada from './private_rutes/PrivateUserRoutes';
 import PrivateAdminRoutes from './private_rutes/PrivateAdminRoutes';
 
 
@@ -26,13 +26,18 @@ if (token) {
   tokenAuth(token);
 }
 
+let location = window.location.pathname;
+
+
+
 function App() {
   return (
     <LoginState>
       <CarState>
         <div className="App">
           <Router>
-            <Header />
+            {!location.includes('/admin') ? <Header /> : null}
+
 
             <Route path="/" exact component={Layout} />
 
