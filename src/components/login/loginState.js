@@ -190,7 +190,7 @@ const LoginState = (props) => {
                 mensaje_login_error: state.mensaje_login_error,
                 cargando: state.cargando,
                 admin_auth: state.admin_auth,
-
+                autenticado_admin:state.autenticado_admin,
                 //* funciones
                 sign_in,
                 google_singin,

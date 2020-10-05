@@ -6,7 +6,8 @@ export default (state, action) => {
         case GET_CARS:
             return {
                 ...state,
-                cars: action.payload
+                cars: action.payload,
+                cargando: true
             }
         case GET_ONE_CAR:
             return {

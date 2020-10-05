@@ -33,6 +33,7 @@ export default (state, action) => {
 
             }
         case GET_ADMIN_USER:
+            localStorage.setItem('admin', JSON.stringify(action.payload));
             return {
                 ...state,
                 cargando: false,
@@ -87,6 +88,7 @@ export default (state, action) => {
                 registro_exitoso: false
             }
         case LOGIN_ADMIN_SUCCESS:
+            
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,

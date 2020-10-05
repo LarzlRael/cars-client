@@ -14,7 +14,8 @@ const CarState = props => {
         cars: [],
         errocar: false,
         carSelected: null,
-        oneCar: []
+        oneCar: [],
+        cargando:false
     }
     //? crear  el distpach y el state
     const [state, dispatch] = useReducer(carReducer, initialState);
@@ -27,7 +28,7 @@ const CarState = props => {
             // console.log(resultado.data);
             dispatch({
                 type: GET_CARS,
-                payload: resultado.data
+                payload: resultado.data.cars
             })
 
         } catch (error) {
@@ -74,7 +75,9 @@ const CarState = props => {
                 //? states
                 cars: state.cars,
                 oneCar: state.oneCar,
+                cargando: state.cargando,
 
+                
                 //* funciones
                 getCars,
                 getOneCar,

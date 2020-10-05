@@ -4,6 +4,7 @@ import "./styles/cards-card.scss";
 
 const Car_info = (props) => {
 
+    // console.log('location ',props.location.about);
     const carContext = useContext(CarContext);
 
     const { getOneCar, oneCar } = carContext;

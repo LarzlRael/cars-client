@@ -16,7 +16,7 @@ const Login = (props) => {
     useEffect(() => {
 
         if (autenticado) {
-            props.history.push('/cars');
+            props.history.push('/cars' );
             window.location.reload();
         }
         // eslint-disable-next-line

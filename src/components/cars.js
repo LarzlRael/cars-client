@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./styles/cards-card.scss"
-import CarContext from './cars/carsContext'
+import CarContext from './cars/carsContext';
+
 import Car from './car';
 
 import LoginContext from './login/LoginContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Cars = () => {
 
     const carContext = useContext(CarContext);
 
-    const { getCars, cars, findcars } = carContext;
+    const { getCars, cars, findcars,cargando } = carContext;
     const loginContext = useContext(LoginContext);
 
     let { autenticado, user } = loginContext;
@@ -81,7 +83,10 @@ const Cars = () => {
                 </div>
                 : null}
 
+                {!cargando ? <CircularProgress color="#01c8b3" className="flex-item"/> : null}
             <div className="cars-cards-container">
+
+
                 {cars.length !== 0 ? cars.map(car => (
                     <Car key={car.id} car={car} />
                 )) : <h2>No hay nada que mostrar</h2>}

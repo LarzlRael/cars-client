@@ -17,7 +17,12 @@ const Car = ({ car }) => {
             <hr/>
             <div className="view-more">
                 <h2 className="card-maker"> {car.maker}</h2>
-                <Link className="button-view-more" to={`/cars/${car.id}`}>Ver Auto <i className="fas fa-chevron-right"></i></Link>
+                <Link className="button-view-more" to={{
+                    pathname:`/cars/${car.id}`,
+                    // about_car: car
+                }}
+                    
+                >Ver Auto</Link>
             </div>
 
         </div>

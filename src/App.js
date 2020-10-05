@@ -20,6 +20,9 @@ import PrivateAdminRoutes from './private_rutes/PrivateAdminRoutes';
 
 import tokenAuth from './config/token_auth';
 import PrivateUserRoutes from './private_rutes/PrivateUserRoutes';
+import CustomerState from './components/adminComponents/users_context/customerState';
+
+
 
 const token = localStorage.getItem('token');
 if (token) {
@@ -33,39 +36,43 @@ let location = window.location.pathname;
 function App() {
   return (
     <LoginState>
-      <CarState>
-        <div className="App">
-          <Router>
-            {!location.includes('/admin') ? <Header /> : null}
+      <CustomerState>
+        <CarState>
+          <div className="App">
+            <Router>
+              {!location.includes('/admin') ? <Header /> : null}
 
 
-            <Route path="/" exact component={Layout} />
+              <Route path="/" exact component={Layout} />
 
-            <Switch>
-              <Route path="/cars/:id" component={Car_info} />
-              <Route path="/cars" component={Cars} />
-            </Switch>
-            <Route path="/login" component={Layout} />
-            <Route path="/register" component={Layout} />
-            {/* //? Admin Routes */}
-            <Switch>
-              {/* <Route path="/admin/dashboard" component={AdminDashboard} />
+              <Switch>
+                <Route path="/cars/:id" component={Car_info} />
+                <Route path="/cars" component={Cars} />
+              </Switch>
+              <Route path="/login" component={Layout} />
+              <Route path="/register" component={Layout} />
+              {/* //? Admin Routes */}
+              <Switch>
+                {/* <Route path="/admin/dashboard" component={AdminDashboard} />
               <Route path="/admin/users" exact component={AdminLogin} /> */}
 
-              <PrivateAdminRoutes path="/admin/dashboard" component={AdminDashboard} />
-              <PrivateAdminRoutes path="/admin/users" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/dashboard" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/users" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/profile" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/clientes" component={AdminDashboard} />
 
-              <PrivateUserRoutes path="/proyects" component={Layout} />
+                <PrivateUserRoutes path="/proyects" component={Layout} />
 
-              <Route path="/admin" component={AdminLogin} />
+                <Route path="/admin" component={AdminLogin} />
 
-              <Route path="/loginadmin/new-car" component={AdminLogin} />
-            </Switch>
+                <Route path="/loginadmin/new-car" component={AdminLogin} />
+              </Switch>
 
 
-          </Router>
-        </div>
-      </CarState>
+            </Router>
+          </div>
+        </CarState>
+      </CustomerState>
     </LoginState>
   );
 }

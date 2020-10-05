@@ -1,5 +1,10 @@
 @import "variables";
 $radius: 10px;
+
+.flex-item{
+    display: flex;
+}
+
 .cars-cards-container {
     width: 100%;
     display: grid;
@@ -7,10 +12,19 @@ $radius: 10px;
     gap: 3rem;
 }
 
+
+
+
 .card-car {
     border: 1px solid #ccc;
     border-radius: $radius;
-
+    box-shadow: -4px 5px 5px 0px rgba(204,204,204,1);
+    transition: .2s ease all;
+    &:hover{
+        box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+        transform: scale(1.1);
+        z-index: 1000;
+    }
     .info-card {
         padding: 1rem;
         .card-title {
@@ -32,14 +46,20 @@ $radius: 10px;
         padding: 10px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        
+
+
+        
         .card-maker {
             font-size: 1rem;
             font-weight: 300;
             text-transform: uppercase;
         }
         .button-view-more {
+            align-self: flex-start;
+
             color: $primary-color;
+            text-decoration: none;
             border: 2px solid $primary-color;
             background: white;
             border-radius: 20px;
@@ -47,6 +67,11 @@ $radius: 10px;
             font-size: 0.8rem;
             font-weight: normal;
             transition: 0.3s ease all;
+            justify-content: space-between;
+            margin-left: 10px;
+            text-align: center;
+            
+            
             &:hover {
                 cursor: pointer;
                 color: white;

@@ -8,6 +8,7 @@ $dash-title-color: #424869;
     display: flex;
     width: 65%;
     margin: auto;
+    margin-top: 5rem;
     height: 500px;
     -webkit-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
     -moz-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
@@ -110,6 +111,12 @@ $dash-title-color: #424869;
                     background: $dash-title-color;
                     border-left: 5px solid $primary-color;
                 }
+                &.active {
+                    color: $primary-color;
+                    background: $dash-title-color;
+                    border-left: 5px solid $primary-color;
+                    font-size: 0.85rem;
+                }
             }
         }
         .title-dash {
@@ -119,5 +126,21 @@ $dash-title-color: #424869;
             font-size: 0.7rem;
             text-transform: uppercase;
         }
+    }
+}
+
+.profile-image {
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    .profile-image-name {
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .profile-image-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
     }
 }

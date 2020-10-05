@@ -11,8 +11,6 @@ const AdminLogin = (props) => {
     const { adminLogin, mensaje_login_error, admin_auth } = loginContext;
 
     useEffect(() => {
-        console.log('admin auto ', admin_auth);
-        
         if (admin_auth) {
             props.history.push('/admin/dashboard');
         }
