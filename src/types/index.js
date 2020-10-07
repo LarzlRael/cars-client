@@ -23,5 +23,7 @@ export const GET_USER = 'GET_USER';
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 
 export const GET_USERS = 'GET_USERS';
-//export const LOGIN_ADMIN = 'LOGIN_ADMIN';
+export const CLEAR_COSTUMERS = 'CLEAR_COSTUMERS';
+
+export const SEARCH_CUSTOMERS = 'SEARCH_CUSTOMERS';
 

@@ -144,3 +144,46 @@ $dash-title-color: #424869;
         border-radius: 100%;
     }
 }
+
+.table {
+    min-width: 600px;
+    height: 500px;
+    margin: auto;
+}
+.img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.img2 {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    opacity: 0.35;
+}
+
+.paginacion {
+    margin: 1.5rem;
+    display: flex;
+    button {
+        padding: 0.8rem;
+        background: $dash-background;
+        color: white;
+        border: none;
+        margin: 3px;
+        cursor: pointer;
+        // &.active {
+        //     color: $primary-color;
+        //     border: 1px solid $primary-color;
+        //     font-size: 0.6rem;
+        // }
+    }
+}
+.search-customer {
+    display: block;
+    .text-field-search {
+        margin: 2rem;
+        width: 20%;
+    }
+}

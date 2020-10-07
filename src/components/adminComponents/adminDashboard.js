@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {  BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import LoginContext from '../login/LoginContext';
 import AdminProfile from './adminProfile';
@@ -8,7 +8,7 @@ import ListClient from './clientes/ListClient';
 import "./login-admin-styles.scss"
 const AdminDashboard = () => {
     const loginContext = useContext(LoginContext);
-    const { autenticado_admin, cerrarSesion } = loginContext;
+    const {  cerrarSesion } = loginContext;
 
 
     const accountsLink = [
