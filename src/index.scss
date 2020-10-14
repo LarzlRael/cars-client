@@ -1,6 +1,7 @@
 @import "./components/styles/variables";
 
 $text-color: #49546b;
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -17,9 +18,15 @@ $text-color: #49546b;
     .links {
         .link {
             margin-right: 40px;
-            font-size: 22px;
+            font-size: 1.2rem;
             color: #49546b;
             text-decoration: none;
+            &.active {
+                color: $primary-color;
+                font-size: 1.3rem;
+
+                border-bottom: 5px solid $primary-color;
+            }
         }
     }
 }

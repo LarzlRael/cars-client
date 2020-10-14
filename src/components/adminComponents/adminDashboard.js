@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import {  BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import LoginContext from '../login/LoginContext';
 import AdminProfile from './adminProfile';
 import AdminUsers from './adminUsers';
@@ -7,9 +7,9 @@ import ListClient from './clientes/ListClient';
 
 import "./login-admin-styles.scss"
 const AdminDashboard = () => {
-    const loginContext = useContext(LoginContext);
-    const {  cerrarSesion } = loginContext;
 
+    const loginContext = useContext(LoginContext);
+    const { cerrarSesion, s_autenticado_admin } = loginContext; 
 
     const accountsLink = [
         {
@@ -30,12 +30,11 @@ const AdminDashboard = () => {
             title_group: 'Clientes',
             items: [
                 { title: 'Lista de clientes', to: '/admin/clientes' },
-                ]
+            ]
         },
     ];
 
-    let admin = JSON.parse(localStorage.getItem('admin'));
-    console.log(admin)
+    // let { image, name } = s_autenticado_admin;
     return (
         <Router>
             <div className="dashboard">
@@ -43,21 +42,25 @@ const AdminDashboard = () => {
 
                     <div className="profile-image">
                         <img className="profile-image-img" src={
-                            admin.image ? admin.image : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                            s_autenticado_admin && s_autenticado_admin.image ? s_autenticado_admin.image : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
                         } alt="" />
-                        <h4 className="profile-image-name">{admin.name}</h4>
+                        <h4 className="profile-image-name">{s_autenticado_admin ? s_autenticado_admin.name : null}</h4>
                     </div>
                     <div className="dash-group">
-                        {accountsLink.map((item) => (
+                        {accountsLink.map((item, i) => (
                             <>
-                                <span className="title-dash">
+                                <span className="title-dash" key={i}>
                                     {item.title_group}
                                 </span>
 
-                                {item.items.map(link => (
-                                    <NavLink activeClassName="active" item className="dash-item" to={link.to}>{link.title}</NavLink>
+                                {item.items.map((link, i) => (
+                                    <NavLink
+                                        key={i}
+                                        activeClassName="active"
+                                        item className="dash-item"
+                                        to={link.to}>{link.title}
+                                    </NavLink>
                                 ))}
-
                             </>
                         ))}
                     </div>

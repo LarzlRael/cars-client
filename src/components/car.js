@@ -8,7 +8,7 @@ const Car = ({ car }) => {
     // }
 
     return (
-        <div className="card-car">
+        <div className="card-car animate__animated animate__fadeIn">
             <img src={car.imageURL} alt="" />
             <div className="info-card">
                 <h1 className="card-title">{car.name_car}</h1>

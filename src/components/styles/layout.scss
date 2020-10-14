@@ -2,36 +2,40 @@
 
 .layout {
     display: flex;
-}
-.info {
-    
-    margin-top: 2rem;
-    width: 35%;
-    height: 500px;
-    .subtitle {
-        font-size: 25px;
-        text-transform: uppercase;
-        color: #666e74;
-    }
-    .fresh {
-        h1 {
-            color: $primary-color;
-            font-size: 48px;
-            line-height: 0;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin: 60px 0;
+    .info {
+        margin-top: 2rem;
+        width: 40%;
+        height: 500px;
+        .subtitle {
+            font-size: 25px;
+            text-transform: uppercase;
+            color: #666e74;
+        }
+        .fresh {
+            h1 {
+                color: $primary-color;
+                font-size: 48px;
+                line-height: 0;
+                font-weight: 700;
+                letter-spacing: 3px;
+                margin: 60px 0;
+            }
+        }
+        .desc {
+            p {
+                font-size: 1.2rem;
+                color: #666e70;
+                line-height: 1.5;
+                margin: 2rem 0px;
+            }
         }
     }
-    .desc {
-        p {
-            font-size: 1.2rem;
-            color: #666e70;
-            line-height: 1.5;
-            margin: 2rem 0px;
-        }
+    .slider {
+        width: 65%;
+        border: 1px solid #000;
     }
 }
+
 .footer {
     margin-top: -40px;
     width: 100%;
@@ -69,5 +73,19 @@
     &:hover {
         color: white;
         background: $primary-color;
+    }
+}
+
+.slider-carousel {
+    padding: 3rem;
+    .slider_item {
+        
+    
+        .image_slider {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #ddd;
+            background: #fff;
+        }
     }
 }

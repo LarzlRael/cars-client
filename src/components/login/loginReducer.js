@@ -33,23 +33,23 @@ export default (state, action) => {
 
             }
         case GET_ADMIN_USER:
-            localStorage.setItem('admin', JSON.stringify(action.payload));
+            
             return {
                 ...state,
                 cargando: false,
-                mensaje: null,
+                mensaje: null,  
 
                 //autenticado: true,
                 //user: action.payload,
                 mensaje_login_error: null,
-                admin_auth: true,
-                autenticado_admin: action.payload
+                s_admin_auth: true,
+                s_autenticado_admin: action.payload
             }
 
         case SIGN_IN_FAIL:
         case LOG_OUT:
             localStorage.removeItem('token');
-            console.log('error del servidor ' + action.payload)
+            
             return {
                 ...state,
                 token: null,
@@ -58,8 +58,8 @@ export default (state, action) => {
                 mensaje_login_error: action.payload,
                 user: null,
 
-                admin_auth: null,
-                autenticado_admin: null
+                s_admin_auth: null,
+                s_autenticado_admin: null
             }
 
         case GOOGLE_SIGN_IN:
@@ -95,9 +95,8 @@ export default (state, action) => {
                 mensaje: null,
                 cargando: false,
                 mensaje_login_error: null,
-
-                admin_auth: true,
-                autenticado_admin: action.payload
+                s_admin_auth: true,
+                s_autenticado_admin: action.payload
 
             }
         default:

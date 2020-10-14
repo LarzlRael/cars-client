@@ -7,19 +7,19 @@ const PrivateAdminRoutes = ({ component: Component, ...props }) => {
 
     const loginContext = useContext(LoginContext);
 
-    const { admin_auth, authUserAdmin, cargando } = loginContext;
+    const { s_admin_auth, fauthUserAdmin, cargando } = loginContext;
 
 
 
     //? Usando el useEffect para obtener los datos del usuario
     useEffect(() => {
-        authUserAdmin();
+        fauthUserAdmin();
         // eslint-disable-next-line
     }, []);
 
     return (
         <Route {...props}
-            render={props => !admin_auth && !cargando ?
+            render={props => !s_admin_auth && !cargando ?
                 (<Redirect to='/admin' />)
                 :
                 (<Component {...props} />)}

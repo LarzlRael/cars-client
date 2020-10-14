@@ -110,10 +110,11 @@ const ListClient = () => {
                     </TableHead>
                     <TableBody>
                         {customers.map((row) => (
-                            <TableRow key={row.name}>
+                            <TableRow key={row.id_user}>
                                 <TableCell component="th" scope="row">
 
-                                    <img src={row.google === 1 ? row.image : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
+                                    <img src={row.google === 1 ? row.image :
+                                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
                                         className="img"
                                         alt="" />
                                 </TableCell>
@@ -145,7 +146,7 @@ const ListClient = () => {
                 </Table>
             </TableContainer>
 
-            {/* <div className="paginacion">
+            <div className="paginacion">
                 {fields.map(field => (
                     <div className="fild-item">
                         <button className="active" onClick={
@@ -153,7 +154,7 @@ const ListClient = () => {
                             {field.page_number}</button>
                     </div>
                 ))}
-            </div> */}
+            </div>
         </div >
     )
 }

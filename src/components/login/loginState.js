@@ -22,8 +22,10 @@ const LoginState = (props) => {
         cargando: true,
         registro_exitoso: false,
 
-        admin_auth: null,
-        autenticado_admin: null,
+        //? if admin is autenticaded is true 
+        s_admin_auth: null,
+        //? store for admin details
+        s_autenticado_admin: null,
 
     }
     //? crear  el distpach y el state
@@ -106,7 +108,7 @@ const LoginState = (props) => {
 
     }
 
-    const authUserAdmin = async () => {
+    const fauthUserAdmin = async () => {
         console.log('admin use now')
 
         const token = localStorage.getItem('token');
@@ -117,7 +119,7 @@ const LoginState = (props) => {
         try {
             //console.log('solicitando usuario');
             const respuesta = (await clienteAxios.get('login/getadminuser')).data;
-            console.log(respuesta);
+            // console.log(respuesta);
             dispatch({
                 type: GET_ADMIN_USER,
                 payload: respuesta.userdb
@@ -141,9 +143,7 @@ const LoginState = (props) => {
         try {
             //console.log('solicitando usuario');
             const respuesta = (await clienteAxios.get('login/getuser')).data;
-
             //console.log(respuesta);
-
             dispatch({
                 type: GET_USER,
                 payload: respuesta.userdb
@@ -159,16 +159,19 @@ const LoginState = (props) => {
 
     const adminLogin = async (user) => {
 
-        console.log(props);
+        // console.log(props);
         try {
-            const resultado = await clienteAxios.post('/login/loginadmin', { email: user.email, password: user.password });
+            const resultado = await clienteAxios.post('/login/loginadmin', {
+                email: user.email,
+                password: user.password
+            });
 
             dispatch({
                 type: LOGIN_ADMIN_SUCCESS,
                 payload: resultado.data
             });
 
-            authUserAdmin();
+            fauthUserAdmin();
 
         } catch (error) {
             console.error(error)
@@ -189,8 +192,10 @@ const LoginState = (props) => {
                 registro_exitoso: state.registro_exitoso,
                 mensaje_login_error: state.mensaje_login_error,
                 cargando: state.cargando,
-                admin_auth: state.admin_auth,
-                autenticado_admin:state.autenticado_admin,
+
+                s_admin_auth: state.s_admin_auth,
+                s_autenticado_admin: state.s_autenticado_admin,
+
                 //* funciones
                 sign_in,
                 google_singin,
@@ -198,7 +203,7 @@ const LoginState = (props) => {
                 authUser,
                 register,
                 adminLogin,
-                authUserAdmin,
+                fauthUserAdmin,
 
             }}
         >

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import "./styles/login-register.scss"
 import LoginContext from './login/LoginContext';
 import ErrorLabel from './error-label';
+import { REGISTER } from '../routes/routes';
 
 const Login = (props) => {
 
@@ -16,7 +17,7 @@ const Login = (props) => {
     useEffect(() => {
 
         if (autenticado) {
-            props.history.push('/cars' );
+            props.history.push('/cars');
             window.location.reload();
         }
         // eslint-disable-next-line
@@ -57,12 +58,12 @@ const Login = (props) => {
     return (
 
 
-        <div className="form-container">
+        <div className="form-container animate__animated animate__fadeInLeft">
 
             <form onSubmit={onSubmithandler} className="form-login">
                 <div className="form-title">
                     Iniciar Sesión
-                <span>Para poder todos los carros!</span>
+                <span>Para poder ver todos los carros!</span>
 
                 </div>
 
@@ -101,7 +102,8 @@ const Login = (props) => {
                     />
                 </div>
                 <div className="message-button">
-                    <label htmlFor="" >¿No tienes Cuenta?</label> <Link className="register" to="/register">Registrare ahora</Link>
+                    <label htmlFor="" >¿No tienes Cuenta?</label> 
+                    <Link className="register" to={REGISTER}>Registrare ahora</Link>
                 </div>
 
 

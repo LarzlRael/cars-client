@@ -104,7 +104,7 @@ const Register = () => {
 
 
     return (
-        <div className="form-container">
+        <div className="form-container animate__animated animate__fadeInRight">
 
             <div className="form-title">
                 Registrarse

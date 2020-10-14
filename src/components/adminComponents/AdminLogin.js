@@ -8,14 +8,15 @@ import "./login-admin-styles.scss"
 const AdminLogin = (props) => {
     const loginContext = useContext(LoginContext);
 
-    const { adminLogin, mensaje_login_error, admin_auth } = loginContext;
+    const { adminLogin, mensaje_login_error, s_admin_auth } = loginContext;
 
     useEffect(() => {
-        if (admin_auth) {
+        if (s_admin_auth) {
             props.history.push('/admin/dashboard');
+
         }
         // eslint-disable-next-line
-    }, [admin_auth])
+    }, [s_admin_auth])
 
 
     const [userAdmin, setUserAdmin] = useState({
@@ -51,10 +52,10 @@ const AdminLogin = (props) => {
     }
 
     return (
-        <div className="login-div">
-            <div className="form">
+        <div className="login-div animate__animated animate__fadeIn">
+            <div className="form animate__animated animate__fadeInUp">
                 <form className="formLogin" onSubmit={handleSumbit}>
-                    <h3 className="title">Login</h3>
+                    <h3 className="title ">Login</h3>
                     <input
                         className={error_message ? 'input-login error' : 'input-login'}
                         placeholder="Usuario"
@@ -77,7 +78,7 @@ const AdminLogin = (props) => {
                         <ErrorLabel message={error_message} /> : null}
                 </form>
             </div>
-            <div className="info-login">
+            <div className="info-login animate__animated animate__fadeInDown">
                 <h1>Adminstrar Cars System</h1>
                 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. A qui ipsam numquam dolore quo, aperiam voluptates labore, error totam rem hic, minus incidunt autem nesciunt ea laborum temporibus enim tempora.</span>
             </div>

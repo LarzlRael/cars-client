@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.scss';
 import Header from './components/Header';
@@ -21,6 +21,9 @@ import PrivateAdminRoutes from './private_rutes/PrivateAdminRoutes';
 import tokenAuth from './config/token_auth';
 import PrivateUserRoutes from './private_rutes/PrivateUserRoutes';
 import CustomerState from './components/adminComponents/users_context/customerState';
+import Login from './components/login';
+import Register from './components/register';
+import { CARS, INICIO, LOGIN, REGISTER } from './routes/routes';
 
 
 
@@ -40,17 +43,22 @@ function App() {
         <CarState>
           <div className="App">
             <Router>
+
               {!location.includes('/admin') ? <Header /> : null}
 
+              <Route path='/' exact  >
+                <Redirect to={INICIO} />
+              </Route>
 
-              <Route path="/" exact component={Layout} />
+              <Route path={INICIO} exact component={Layout} />
 
               <Switch>
                 <Route path="/cars/:id" component={Car_info} />
-                <Route path="/cars" component={Cars} />
+                <Route path={CARS} component={Cars} />
               </Switch>
-              <Route path="/login" component={Layout} />
-              <Route path="/register" component={Layout} />
+
+              <Route path={LOGIN} component={Login} />
+              <Route path={REGISTER} component={Register} />
               {/* //? Admin Routes */}
               <Switch>
                 {/* <Route path="/admin/dashboard" component={AdminDashboard} />

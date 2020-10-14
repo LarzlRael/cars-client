@@ -56,15 +56,14 @@ $radius: 10px;
             text-transform: uppercase;
         }
         .button-view-more {
-            align-self: flex-start;
-
+            align-self: center;
             color: $primary-color;
             text-decoration: none;
             border: 2px solid $primary-color;
             background: white;
             border-radius: 20px;
-            padding: 10px 35px;
-            font-size: 0.8rem;
+            padding: 10px 25px;
+            font-size: 0.9rem;
             font-weight: normal;
             transition: 0.3s ease all;
             justify-content: space-between;
