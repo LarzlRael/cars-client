@@ -2,10 +2,11 @@ import React, { useReducer } from 'react';
 //? context
 import CarContext from './carsContext';
 
-import { GET_CARS, GET_ONE_CAR, FIND_CARS } from '../../types';
+import { GET_CARS, GET_ONE_CAR, FIND_CARS ,NEW_CAR} from '../../types';
 import carReducer from './carReducer';
 
 import clienteAxios from '../../config/axios';
+import Swal from 'sweetalert2';
 
 
 const CarState = props => {
@@ -15,7 +16,8 @@ const CarState = props => {
         errocar: false,
         carSelected: null,
         oneCar: [],
-        cargando:false
+        cargando: false,
+        
     }
     //? crear  el distpach y el state
     const [state, dispatch] = useReducer(carReducer, initialState);
@@ -69,6 +71,41 @@ const CarState = props => {
         }
     }
 
+    //? Send new Car been Admin
+
+    const newCar = async (car, file) => {
+        console.log(car, file);
+        let form = new FormData();
+
+        form.append('myImage', file);
+        form.append('name_car', car.name_car);
+        form.append('price', car.price);
+        form.append('description', car.description);
+        form.append('maker', car.maker);
+        form.append('status', car.status);
+        form.append('model', car.model);
+
+        try {
+            const sendData = await clienteAxios.post(`/new-image`, form);
+            console.log(sendData);
+            Swal.fire({
+                title: 'Nuevo Carro Agreado ',
+                text: 'Agregado Correctamente',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            });
+            
+            dispatch({
+                type: NEW_CAR,
+                
+                
+            });
+
+        } catch (error) {
+
+
+        }
+    }
     return (
         <CarContext.Provider
             value={{
@@ -77,11 +114,12 @@ const CarState = props => {
                 oneCar: state.oneCar,
                 cargando: state.cargando,
 
-                
+
                 //* funciones
                 getCars,
                 getOneCar,
-                findcars
+                findcars,
+                newCar
             }}
         >
             {props.children}

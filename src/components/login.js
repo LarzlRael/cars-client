@@ -67,7 +67,6 @@ const Login = (props) => {
 
                 </div>
 
-
                 <div className="grupo-label">
                     <label htmlFor="email">Correo Electrónico</label>
                     <input className="input"

@@ -187,3 +187,55 @@ $dash-title-color: #424869;
         width: 20%;
     }
 }
+
+input[type="file"] {
+    display: none;
+}
+
+
+.item {
+    position:relative;
+    padding-top:20px;
+    display:inline-block;
+    .notify-badge{
+        position: absolute;
+        right:-20px;
+        top:10px;
+         background: red;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color:white;
+        padding:5px 10px;
+        font-size:20px;
+        img{
+            width: 100px;
+            height: 100px;
+            background:none;
+            border-radius: 100%;
+            border: 2px solid white;
+        }
+    }
+}
+
+.item2 {
+    position:relative;
+    padding-top:20px;
+    display:inline-block;
+    .notify-badge{
+        position: absolute;
+        right:-20px;
+        top:10px;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color:white;
+        padding:5px 10px;
+        font-size:20px;
+        img{
+            width: 100px;
+            height: 100px;
+            background:none;
+            border-radius: 100%;
+            border: 0.1rem solid black;
+        }
+    }
+}

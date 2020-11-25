@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.scss';
+
 import Header from './components/Header';
 import Layout from './components/Layout';
 // import Login from './components/login';
@@ -24,6 +25,7 @@ import CustomerState from './components/adminComponents/users_context/customerSt
 import Login from './components/login';
 import Register from './components/register';
 import { CARS, INICIO, LOGIN, REGISTER } from './routes/routes';
+
 
 
 
@@ -68,6 +70,8 @@ function App() {
                 <PrivateAdminRoutes path="/admin/users" component={AdminDashboard} />
                 <PrivateAdminRoutes path="/admin/profile" component={AdminDashboard} />
                 <PrivateAdminRoutes path="/admin/clientes" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/vehiculos" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/vervehiculos" component={AdminDashboard} />
 
                 <PrivateUserRoutes path="/proyects" component={Layout} />
 

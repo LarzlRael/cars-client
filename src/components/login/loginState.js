@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react';
+import Swal from 'sweetalert2'
+
 //? context
 import LoginContext from './LoginContext';
 
@@ -24,7 +26,7 @@ const LoginState = (props) => {
 
         //? if admin is autenticaded is true 
         s_admin_auth: null,
-        //? store for admin details
+        //? store for admin detaills
         s_autenticado_admin: null,
 
     }
@@ -43,6 +45,7 @@ const LoginState = (props) => {
                 payload: resultado.data
             });
 
+            
             authUser();
 
         } catch (error) {
@@ -50,7 +53,13 @@ const LoginState = (props) => {
             dispatch({
                 type: SIGN_IN_FAIL,
                 payload: error.response.data.error
-            })
+            });
+            Swal.fire({
+                title: 'Hubo un error',
+                text: error.response.data.error,
+                icon: 'error',
+                confirmButtonText: 'Reintentar'
+            });
         }
     }
 
@@ -64,12 +73,27 @@ const LoginState = (props) => {
                         type: REGISTER_FAIL,
                         payload: error.response.data.error
                     });
+                    
+                    Swal.fire({
+                        title: 'Error al registrarse',
+                        text: error.response.data.error,
+                        icon: 'error',
+                        confirmButtonText: 'Reintentar'
+                    })
+                    
                 });
             console.log(resultado.data)
             dispatch({
                 type: REGISTER,
                 payload: 'Registro realizado correctamente'
             });
+
+            Swal.fire({
+                title: 'Registro Exitoso',
+                text: 'Se ha registrado corretamente',
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            })
 
         } catch (error) {
             // console.log('error al registrarse', error.error)
@@ -178,7 +202,7 @@ const LoginState = (props) => {
             dispatch({
                 type: SIGN_IN_FAIL,
                 payload: error.response.data.error
-            })
+            });
         }
     }
 

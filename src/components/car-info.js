@@ -9,8 +9,9 @@ const Car_info = (props) => {
 
     const { getOneCar, oneCar } = carContext;
     const { price, description, imageURL, name_car, model, status, maker } = oneCar;
-    let mensaje
+    let mensaje;
     const id = props.match.params.id;
+
     useEffect(() => {
         getOneCar(id);
         
@@ -27,8 +28,8 @@ const Car_info = (props) => {
                 <h1 className="one-card-info-title">{name_car}</h1>
                 <p className="one-card-info-desc"> {description}</p>
                 <h1>{model} </h1>
-                <h1>{status}</h1>
-                <h1>{maker}</h1>
+                <h2>{status}</h2>
+                <h2>{maker}</h2>
                 <div className="price-buttons">
                     <h4 className="price">{price}</h4>
                     <button><i className="fas fa-shopping-cart"></i>Comprar</button>

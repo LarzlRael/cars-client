@@ -6,10 +6,12 @@ import AdminUsers from './adminUsers';
 import ListClient from './clientes/ListClient';
 
 import "./login-admin-styles.scss"
+import Vehiculos from './vehiculos/vehiculos';
+import VerVehiculos from './vehiculos/verVehiculos';
 const AdminDashboard = () => {
 
     const loginContext = useContext(LoginContext);
-    const { cerrarSesion, s_autenticado_admin } = loginContext; 
+    const { cerrarSesion, s_autenticado_admin } = loginContext;
 
     const accountsLink = [
         {
@@ -23,8 +25,8 @@ const AdminDashboard = () => {
             title_group: 'Empleados',
             items: [
                 { title: 'Empleados', to: '/admin/profilexd' },
-                { title: 'Empleados y vehiculos', to: '/admin/otro' },
-                { title: 'Editar', to: '/admin/xd' }]
+                { title: 'Agregar Vehiculos', to: '/admin/vehiculos' },
+                { title: 'Ver vehiculos', to: '/admin/vervehiculos' }]
         },
         {
             title_group: 'Clientes',
@@ -94,6 +96,14 @@ const AdminDashboard = () => {
                         <Route path="/admin/profile" component={AdminProfile} />
                         <Route path="/admin/users" component={AdminUsers} />
                         <Route path="/admin/clientes" component={ListClient} />
+
+                        <Route path="/admin/vervehiculos" component={VerVehiculos} />
+                        
+                        <Switch>
+                            <Route path="/admin/vehiculos" component={Vehiculos} />
+                            <Route path="/admin/vehiculos/:id" component={VerVehiculos} />
+                        </Switch>
+
 
                     </Switch>
 

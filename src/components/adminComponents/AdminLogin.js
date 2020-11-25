@@ -12,7 +12,7 @@ const AdminLogin = (props) => {
 
     useEffect(() => {
         if (s_admin_auth) {
-            props.history.push('/admin/dashboard');
+            props.history.push('admin/profile');
 
         }
         // eslint-disable-next-line
