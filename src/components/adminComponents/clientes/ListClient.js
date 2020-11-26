@@ -34,6 +34,7 @@ const ListClient = () => {
 
     useEffect(() => {
         getCustomers(0, 5);
+        // eslint-disable-next-line
     }, []);
     const [query, setQuery] = useState({ query_search: '' });
 
@@ -76,7 +77,7 @@ const ListClient = () => {
     return (
         <div>
             <div className="search-customer">
-
+                <div className="container mt-3" ><h3>Listado de Clientes</h3></div>
                 <TextField
                     id="standard-basic"
                     label="Buscar Usuario"

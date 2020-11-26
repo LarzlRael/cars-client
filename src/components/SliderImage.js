@@ -2,8 +2,6 @@ import React from 'react'
 import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@material-ui/core'
 
-import { css } from '@emotion/core'
-
 import './styles/layout.scss';
 
 // ? images

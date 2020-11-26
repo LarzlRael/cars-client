@@ -1,14 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { useParams } from 'react-router-dom';
 import CarContext from '../../cars/carsContext';
 
 import '../login-admin-styles.scss';
 
-const Vehiculos = (props) => {
+const Vehiculos = () => {
     
 
     const car_context = useContext(CarContext);
-    const { newCar, cargando } = car_context;
+    const { newCar } = car_context;
 
     const status_car = [
         { nombre: 'Viejo', value: 'viejo' },
@@ -62,7 +61,7 @@ const Vehiculos = (props) => {
         imageFile: null,
         badge: marcas[0].image
     })
-    const { name_car, price, description, model, status, maker, year } = car;
+    const { name_car, price, description, model, status, maker } = car;
 
     //? Enviar 
 
@@ -214,7 +213,6 @@ const Vehiculos = (props) => {
                                         className="form-control"
                                         type="file"
                                         onChange={onChangeImage}
-                                        className="form-control"
                                         id="imagen" />
                                 </div>
                                 <button

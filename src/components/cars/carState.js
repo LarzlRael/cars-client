@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 //? context
 import CarContext from './carsContext';
 
-import { GET_CARS, GET_ONE_CAR, FIND_CARS ,NEW_CAR} from '../../types';
+import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR, VIEW_CARS } from '../../types';
 import carReducer from './carReducer';
 
 import clienteAxios from '../../config/axios';
@@ -17,7 +17,9 @@ const CarState = props => {
         carSelected: null,
         oneCar: [],
         cargando: false,
-        
+        saleRecord: []
+
+
     }
     //? crear  el distpach y el state
     const [state, dispatch] = useReducer(carReducer, initialState);
@@ -94,15 +96,52 @@ const CarState = props => {
                 icon: 'success',
                 confirmButtonText: 'Continuar'
             });
-            
+
             dispatch({
                 type: NEW_CAR,
-                
-                
+
+
             });
 
         } catch (error) {
 
+
+        }
+    }
+    const viewSaleRecord = async () => {
+        try {
+
+            const saleRecord = await clienteAxios.get(`/venta/history`);
+            //console.log(saleRecord.data.salesRecords);
+            // console.log(resultado_busqueda)
+
+            dispatch({
+                type: VIEW_CARS,
+                payload: saleRecord.data.salesRecords
+            });
+
+        } catch (error) {
+
+        }
+    }
+    const payCar = async (id_user, id_car, price) => {
+        try {
+
+            const pay = await clienteAxios.post(`/venta/pagar`, {
+                id_user,
+                id_car,
+                price
+            });
+            console.log(pay.data);
+            //console.log(saleRecord.data.salesRecords);
+            // console.log(resultado_busqueda)
+
+            // dispatch({
+            //     type: PAY_CAR,
+            //     payload: saleRecord.data.salesRecords
+            // });
+
+        } catch (error) {
 
         }
     }
@@ -113,13 +152,16 @@ const CarState = props => {
                 cars: state.cars,
                 oneCar: state.oneCar,
                 cargando: state.cargando,
+                saleRecord: state.saleRecord,
 
 
                 //* funciones
                 getCars,
                 getOneCar,
                 findcars,
-                newCar
+                newCar,
+                viewSaleRecord,
+                payCar
             }}
         >
             {props.children}

@@ -1,4 +1,4 @@
-import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR } from "../../types";
+import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR,VIEW_CARS } from "../../types";
 
 
 export default (state, action) => {
@@ -25,6 +25,11 @@ export default (state, action) => {
                 ...state,
                 cargando: false
             }
+        case VIEW_CARS: 
+        return {
+            ...state,
+            saleRecord: action.payload
+        }
         default:
             return state;
     }

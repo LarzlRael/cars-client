@@ -25,6 +25,7 @@ import CustomerState from './components/adminComponents/users_context/customerSt
 import Login from './components/login';
 import Register from './components/register';
 import { CARS, INICIO, LOGIN, REGISTER } from './routes/routes';
+import PayCar from './components/PayCar';
 
 
 
@@ -72,8 +73,11 @@ function App() {
                 <PrivateAdminRoutes path="/admin/clientes" component={AdminDashboard} />
                 <PrivateAdminRoutes path="/admin/vehiculos" component={AdminDashboard} />
                 <PrivateAdminRoutes path="/admin/vervehiculos" component={AdminDashboard} />
+                <PrivateAdminRoutes path="/admin/ventas" component={AdminDashboard} />
 
                 <PrivateUserRoutes path="/proyects" component={Layout} />
+                <PrivateUserRoutes path="/payment-method" component={PayCar} />
+
 
                 <Route path="/admin" component={AdminLogin} />
 

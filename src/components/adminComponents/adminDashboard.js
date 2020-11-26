@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import LoginContext from '../login/LoginContext';
 import AdminProfile from './adminProfile';
 import AdminUsers from './adminUsers';
+import AdminVentas from './adminVentas';
 import ListClient from './clientes/ListClient';
 
 import "./login-admin-styles.scss"
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
         {
             title_group: 'Empleados',
             items: [
-                { title: 'Empleados', to: '/admin/profilexd' },
+                { title: 'Registro de Ventas', to: '/admin/ventas' },
                 { title: 'Agregar Vehiculos', to: '/admin/vehiculos' },
                 { title: 'Ver vehiculos', to: '/admin/vervehiculos' }]
         },
@@ -98,6 +99,8 @@ const AdminDashboard = () => {
                         <Route path="/admin/clientes" component={ListClient} />
 
                         <Route path="/admin/vervehiculos" component={VerVehiculos} />
+                        
+                        <Route path="/admin/ventas" component={AdminVentas} />
                         
                         <Switch>
                             <Route path="/admin/vehiculos" component={Vehiculos} />
