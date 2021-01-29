@@ -1,5 +1,4 @@
 import React from 'react'
-import "./styles/cards-card.scss"
 import { Link } from 'react-router-dom'
 
 const Car = ({ car }) => {
@@ -9,19 +8,19 @@ const Car = ({ car }) => {
 
     return (
         <div className="card-car animate__animated animate__fadeIn">
-            <img src={car.imageURL} alt="" />
+            <img src={car.imageURL} alt={car.model} />
             <div className="info-card">
                 <h1 className="card-title">{car.name_car}</h1>
                 <h2 className="card-model"> {car.model ? car.model : 'S/M'}</h2>
             </div>
-            <hr/>
+            <hr />
             <div className="view-more">
                 <h2 className="card-maker"> {car.maker}</h2>
                 <Link className="button-view-more" to={{
-                    pathname:`/cars/${car.id}`,
+                    pathname: `/cars/${car.id}`,
                     // about_car: car
                 }}
-                    
+
                 >Ver Auto</Link>
             </div>
 

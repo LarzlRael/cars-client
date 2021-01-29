@@ -1,7 +1,5 @@
-@import "variables";
-$radius: 10px;
 
-.flex-item{
+.flex-item {
     display: flex;
 }
 
@@ -12,16 +10,13 @@ $radius: 10px;
     gap: 3rem;
 }
 
-
-
-
 .card-car {
     border: 1px solid #ccc;
     border-radius: $radius;
-    box-shadow: -4px 5px 5px 0px rgba(204,204,204,1);
-    transition: .2s ease all;
-    &:hover{
-        box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+    box-shadow: -4px 5px 5px 0px rgba(204, 204, 204, 1);
+    transition: 0.2s ease all;
+    &:hover {
+        box-shadow: 0px 0px 5px 5px rgba(204, 204, 204, 1);
         transform: scale(1.1);
         z-index: 1000;
     }
@@ -46,10 +41,7 @@ $radius: 10px;
         padding: 10px;
         display: flex;
         justify-content: space-between;
-        
 
-
-        
         .card-maker {
             font-size: 1rem;
             font-weight: 300;
@@ -69,8 +61,7 @@ $radius: 10px;
             justify-content: space-between;
             margin-left: 10px;
             text-align: center;
-            
-            
+
             &:hover {
                 cursor: pointer;
                 color: white;
@@ -93,8 +84,8 @@ $radius: 10px;
     display: grid;
     grid-template-columns: 45% 1fr;
     margin-top: 2rem;
-    border: 2px rgba(160, 145, 147, .5) solid;
-    border-radius:  0rem 2rem 2rem 0;
+    border: 2px rgba(160, 145, 147, 0.5) solid;
+    border-radius: 0rem 2rem 2rem 0;
     box-shadow: -5px 6px 9px 1px rgba(160, 145, 147, 1);
     img {
         width: 100%;
@@ -105,24 +96,22 @@ $radius: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        
+
         .one-card-info-title {
             margin-top: 2.5rem;
             text-align: center;
             line-height: 0;
             font-weight: 600;
-            font-size: 2.0rem;
+            font-size: 2rem;
             letter-spacing: 4px;
 
             text-transform: uppercase;
-            
         }
         .price-buttons {
             display: flex;
             justify-content: space-between;
         }
         .one-card-info-desc {
-            
             font-size: 1.5rem;
         }
     }
@@ -147,6 +136,7 @@ $radius: 10px;
         transition: 0.3s ease all;
         border-radius: 10px;
         border: 1px solid #000;
+        outline: none;
         &:focus {
             border: 1px solid $primary-color;
             padding: 0.7rem;
@@ -154,12 +144,13 @@ $radius: 10px;
         }
     }
     .select-search {
-        background: $primary-color;
-        color: white;
         align-self: center;
-        padding: 0.7rem;
         border: none;
         border-radius: 5px;
+        background: $primary-color;
+        color: white;
+        outline: none;
+        padding: 0.7rem;
         text-transform: capitalize;
     }
 }

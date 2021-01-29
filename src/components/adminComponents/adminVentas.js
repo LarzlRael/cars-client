@@ -10,7 +10,6 @@ const AdminVentas = () => {
     let mensaje;
     useEffect(() => {
         viewSaleRecord();
-
         // eslint-disable-next-line
     }, [mensaje])
     const totalSale = () => {
@@ -31,7 +30,7 @@ const AdminVentas = () => {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                    <table className="table table-striped">
+                    <table className="table table-wrapper-scroll-y table-striped">
 
                         <thead className="thead-darkee">
                             <tr>

@@ -1,9 +1,11 @@
 import React from 'react'
+import yellow_car from '../static/yellow_car.jpeg'
+
 
 const Image = () => {
     return (
         <div>
-            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" width="300" height="300" alt="" />
+            <img src={yellow_car} width="300" height="300" alt={yellow_car} />
         </div>
     )
 }

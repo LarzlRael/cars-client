@@ -1,52 +1,17 @@
 import React, { useContext, useState } from 'react'
 import CarContext from '../../cars/carsContext';
+import { marcas, status_car } from '../../data/CarData';
 
-import '../login-admin-styles.scss';
+import noavailable from '../../../static/not-available.jpg';
+
+
+
 
 const Vehiculos = () => {
-    
 
     const car_context = useContext(CarContext);
     const { newCar } = car_context;
 
-    const status_car = [
-        { nombre: 'Viejo', value: 'viejo' },
-        { nombre: 'Nuevo', value: 'nuevo' },
-        { nombre: 'Usado', value: 'usado' }
-    ];
-    const marcas = [
-        {
-            nombre_marca: 'Honda',
-            image: 'https://e7.pngegg.com/pngimages/28/215/png-clipart-honda-logo-honda-fit-car-honda-civic-type-r-honda-angle-emblem.png'
-        },
-        {
-            nombre_marca: 'Toyota',
-            image: 'https://www.acidomagenta.com/wp-content/uploads/2009/01/Untitled-11.jpg'
-        },
-        {
-            nombre_marca: 'Corolla',
-            image: 'https://logosvector.net/wp-content/uploads/2013/01/corolla-logo-vector.png'
-        },
-        {
-            nombre_marca: 'Nissan',
-            image: 'https://www.estrategiaynegocios.net/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=vEaBjBLWUIngT48i8UNo88$daE2N3K4ZzOUsqbU5sYv0$zlkn0$KY$YgP7DnaC5v6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg'
-        },
-        {
-            nombre_marca: 'Kia',
-            image: 'https://e7.pngegg.com/pngimages/194/782/png-clipart-kia-motors-logo-car-desktop-brand-car-text-trademark.png'
-        },
-        {
-            nombre_marca: 'Volkswagen',
-            image: 'https://www.oroyfinanzas.com/files/2015/09/volkswagen-logo.jpg'
-        },
-
-        {
-            nombre_marca: 'Renault',
-            image: 'https://files.merca20.com/uploads/2015/04/rebranding-41.jpg'
-        },
-
-
-    ]
     const [car, setCar] = useState({
         name_car: "",
         price: 0,
@@ -112,8 +77,8 @@ const Vehiculos = () => {
             badge: marcas[e.target.selectedIndex].image
         });
 
-
     }
+
     return (
         <div className="container">
             <div className="row">
@@ -192,13 +157,14 @@ const Vehiculos = () => {
                                         className="form-control"
                                         value={status}
                                         onChange={onChange}
-                                        id="">
+                                        >
 
                                         {status_car.map(status => (
                                             <option value={status.value}>
                                                 {status.nombre}
                                             </option>
                                         ))}
+                                        
                                     </select>
                                 </div>
                                 <div className="form-group text-center">
@@ -231,9 +197,9 @@ const Vehiculos = () => {
                         <div className="card-body">
                             <div class="item2">
                                 <span class="notify-badge">
-                                    <img src={urlImage.badge ? urlImage.badge : null} alt="" />
+                                    <img className="no-outline" src={urlImage.badge && urlImage.badge} alt="" />
                                 </span>
-                                <img className="img-fluid" src={urlImage.imageUrlPreview === '' ? 'https://previews.123rf.com/images/pavelstasevich/pavelstasevich1811/pavelstasevich181101027/112815900-no-image-available-icon-flat-vector.jpg' : urlImage.imageUrlPreview} alt="" />
+                                <img className="img-fluid"  src={urlImage.imageUrlPreview === '' ? noavailable : urlImage.imageUrlPreview} alt="" />
                             </div>
 
                             <div className="col mt-4">
@@ -246,7 +212,6 @@ const Vehiculos = () => {
                                 <p className="card-text">{description === "" ? "Descripcion" : description}</p>
                             </div>
                         </div>
-
 
                     </div>
 

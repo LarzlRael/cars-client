@@ -14,9 +14,10 @@ const LoginState = (props) => {
 
     //const { history } = props;
 
+    let getUserFromLocalStorage = localStorage.getItem('user') || [];
     const initialState = {
 
-        user: [],
+        user: getUserFromLocalStorage,
         token: localStorage.getItem('token'),
         autenticado: null,
         mensaje: null,
@@ -33,7 +34,6 @@ const LoginState = (props) => {
     //? crear  el distpach y el state
     const [state, dispatch] = useReducer(loginReducer, initialState);
 
-
     const sign_in = async (user) => {
 
 
@@ -45,11 +45,10 @@ const LoginState = (props) => {
                 payload: resultado.data
             });
 
-            
             authUser();
 
         } catch (error) {
-            console.log(error)
+
             dispatch({
                 type: SIGN_IN_FAIL,
                 payload: error.response.data.error
@@ -65,7 +64,7 @@ const LoginState = (props) => {
 
     const register = async (user) => {
         try {
-            const resultado = await clienteAxios.post(`/users/newuser`, user)
+            await clienteAxios.post(`/users/newuser`, user)
                 .catch((error) => {
                     // console.log(e)
                     console.log(error.response.data.error);
@@ -73,16 +72,16 @@ const LoginState = (props) => {
                         type: REGISTER_FAIL,
                         payload: error.response.data.error
                     });
-                    
+
                     Swal.fire({
                         title: 'Error al registrarse',
                         text: error.response.data.error,
                         icon: 'error',
                         confirmButtonText: 'Reintentar'
                     })
-                    
+
                 });
-            console.log(resultado.data)
+
             dispatch({
                 type: REGISTER,
                 payload: 'Registro realizado correctamente'
@@ -110,7 +109,7 @@ const LoginState = (props) => {
 
         try {
             const resultado = await clienteAxios.post(`/login/google`, { token: token });
-            console.log(resultado.data);
+
             dispatch({
                 type: GOOGLE_SIGN_IN,
                 payload: resultado.data
@@ -133,7 +132,7 @@ const LoginState = (props) => {
     }
 
     const fauthUserAdmin = async () => {
-        console.log('admin use now')
+
 
         const token = localStorage.getItem('token');
         if (token) {
@@ -156,7 +155,6 @@ const LoginState = (props) => {
         }
     }
     const authUser = async () => {
-        console.log('gert user ON')
 
         const token = localStorage.getItem('token');
         if (token) {
@@ -168,6 +166,8 @@ const LoginState = (props) => {
             //console.log('solicitando usuario');
             const respuesta = (await clienteAxios.get('login/getuser')).data;
             //console.log(respuesta);
+            localStorage.setItem('user', JSON.stringify(respuesta));
+
             dispatch({
                 type: GET_USER,
                 payload: respuesta.userdb
@@ -195,10 +195,14 @@ const LoginState = (props) => {
                 payload: resultado.data
             });
 
+            // view here 
+
             fauthUserAdmin();
 
+            
+
         } catch (error) {
-            console.error(error)
+            console.log(error)
             dispatch({
                 type: SIGN_IN_FAIL,
                 payload: error.response.data.error

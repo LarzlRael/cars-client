@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
-import "./styles/cards-card.scss"
+
 import CarContext from './cars/carsContext';
 
 import Car from './car';
 
 import LoginContext from './login/LoginContext';
 import { CircularProgress } from '@material-ui/core';
+
+import noprofilephoto from '../static/noprofilephoto.webp';
+import { fields } from './data/CarData';
+
 
 const Cars = () => {
 
@@ -23,17 +27,7 @@ const Cars = () => {
         // eslint-disable-next-line
     }, [mensaje])
 
-    const fields = [
 
-        { valor: "name_car", nombre_item: "Nombre del carro " },
-        { valor: "price", nombre_item: "Precio" },
-        { valor: "description", nombre_item: "Descripcion" },
-        // { valor: "imageURL", nombre_item: "" }
-        // { valor: "public_id", nombre_item: "" }
-        { valor: "model", nombre_item: "modelo" },
-        { valor: "status", nombre_item: "estado" },
-        { valor: "maker", nombre_item: "Hecho en " }
-    ]
     const [find, setFind] = useState({
         field: fields[0].valor,
         query: ''
@@ -55,11 +49,11 @@ const Cars = () => {
     return (
         <div className="cars">
 
-            {autenticado ?
+            {autenticado &&
                 <div className="profile-search">
 
                     <div className="profile-info">
-                        <img src={autenticado && user.image ? user.image : 'https://matthewsenvironmentalsolutions.com/images/com_hikashop/upload/not-available.png'} alt="" />
+                        <img src={autenticado && user.image ? user.image : noprofilephoto} alt="" />
                     </div>
 
                     <input type="text"
@@ -80,10 +74,9 @@ const Cars = () => {
                         ))}
 
                     </select>
-                </div>
-                : null}
+                </div>}
 
-            {!cargando ? <CircularProgress color="#01c8b3" className="flex-item" /> : null}
+            {!cargando && <CircularProgress color="#01c8b3" className="flex-item" />}
             <div className="cars-cards-container">
 
 

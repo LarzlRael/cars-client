@@ -33,11 +33,11 @@ export default (state, action) => {
 
             }
         case GET_ADMIN_USER:
-            
+
             return {
                 ...state,
                 cargando: false,
-                mensaje: null,  
+                mensaje: null,
 
                 //autenticado: true,
                 //user: action.payload,
@@ -49,7 +49,8 @@ export default (state, action) => {
         case SIGN_IN_FAIL:
         case LOG_OUT:
             localStorage.removeItem('token');
-            
+            localStorage.removeItem('user');
+
             return {
                 ...state,
                 token: null,
@@ -88,7 +89,7 @@ export default (state, action) => {
                 registro_exitoso: false
             }
         case LOGIN_ADMIN_SUCCESS:
-            
+
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,

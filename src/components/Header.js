@@ -10,17 +10,21 @@ const Header = () => {
 
     const loginContext = useContext(LoginContext);
 
-    const { user, autenticado, authUser, cerrarSesion } = loginContext;
+    const {user, autenticado, authUser, cerrarSesion } = loginContext;
     // console.log('autentcado: ', autenticado)
     useEffect(() => {
         authUser();
         // eslint-disable-next-line
     }, []);
 
-    console.log(user);
-    
+    // if (autenticado) {
+    //     const { userdb: { name, last_name } } = JSON.parse(localStorage.getItem('user'));
+    // }
+
+
+
     const logout = () => {
-        cerrarSesion()
+        cerrarSesion();
     }
 
     return (
@@ -44,17 +48,19 @@ const Header = () => {
                     Ver automoviles</NavLink>
 
 
-                {!autenticado ?
+                {!autenticado &&
                     <NavLink
                         to={LOGIN}
                         className="link"
                         activeClassName="active"
                     >
-                        Iniciar sesion</NavLink> :
-                    null}
+                        Iniciar sesion</NavLink>}
 
-                {autenticado ?
-                    <SimpleMenu userName={user.name} lastName={user.last_name} logout={logout} /> : null
+                {autenticado &&
+                    <SimpleMenu
+                        userName={user.name}
+                        lastName={user.last_name}
+                        logout={logout} />
                 }
 
             </div>

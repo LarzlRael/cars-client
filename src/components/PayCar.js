@@ -17,6 +17,7 @@ const PayCar = (props) => {
         e.preventDefault();
         //id_user, id_car, price
         payCar(id_user, id_car, price);
+        
         Swal.fire(
             'Compra realizado con Exito!',
             'Continuar!',

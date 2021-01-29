@@ -1,5 +1,5 @@
-@import "variables";
-$text-color: #49546b;
+$red-color: red;
+
 .form-container {
     width: 100%;
     .form-login {
@@ -11,19 +11,6 @@ $text-color: #49546b;
 
         .group-button {
             width: 100%;
-            .login-button {
-                width: 100%;
-                color: white;
-                background-color: $primary-color;
-                font-size: 1.2rem;
-                padding: 10px 20px;
-                text-transform: uppercase;
-                border-radius: 5px;
-                border: none;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
         }
         .message-button {
             margin-top: 2rem;
@@ -64,9 +51,9 @@ $text-color: #49546b;
         width: 100%;
         padding: 20px;
         font-size: 1.2rem;
-        border: 1px solid red;
+        border: 1px solid $red-color;
         &:focus {
-            border: 1px solid red;
+            border: 1px solid $red-color;
         }
     }
 }
@@ -88,16 +75,24 @@ $text-color: #49546b;
 }
 
 .login-button {
-    width: 100%;
     color: white;
     background-color: $primary-color;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    text-transform: uppercase;
     border-radius: 5px;
     border: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    outline: none;
+    text-transform: uppercase;
+    width: 100%;
+    transition: 0.3s all ease;
+
     &:hover {
         cursor: pointer;
+        // background-color: $hover-color;
+        background-color: darken($color: $primary-color, $amount: 5);
+    }
+    &:focus {
+        outline: none;
     }
 }
 
@@ -120,11 +115,20 @@ $text-color: #49546b;
 .error-message {
     text-align: center;
     margin-bottom: 0.5rem;
-    color: red;
+    color: $red-color;
     padding: 3px;
 }
 .message-success {
     margin-bottom: 0.5rem;
     color: $primary-color;
     padding: 3px;
+}
+
+.register-label-link {
+    text-decoration: none;
+    color: $primary-color;
+    &:hover {
+        text-decoration: none;
+        color: $hover-color;
+    }
 }

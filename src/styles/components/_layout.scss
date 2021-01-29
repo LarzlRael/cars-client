@@ -1,4 +1,3 @@
-@import "variables";
 
 .layout {
     display: flex;
@@ -73,6 +72,7 @@
     &:hover {
         color: white;
         background: $primary-color;
+        text-decoration: none;
     }
 }
 

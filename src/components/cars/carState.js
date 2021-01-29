@@ -26,10 +26,9 @@ const CarState = props => {
 
     const getCars = async () => {
 
-        console.log('get car va a funcionar')
         try {
             const resultado = await clienteAxios.get(`/getcarsinfo`);
-            // console.log(resultado.data);
+        
             dispatch({
                 type: GET_CARS,
                 payload: resultado.data.cars

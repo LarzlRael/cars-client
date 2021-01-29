@@ -3,20 +3,24 @@ import ErrorLabel from '../error-label';
 import LoginContext from '../login/LoginContext';
 
 
-import "./login-admin-styles.scss"
 
-const AdminLogin = (props) => {
+
+const AdminLogin = ({ history }) => {
     const loginContext = useContext(LoginContext);
 
     const { adminLogin, mensaje_login_error, s_admin_auth } = loginContext;
 
     useEffect(() => {
         if (s_admin_auth) {
-            props.history.push('admin/profile');
 
+            const lastPath = localStorage.getItem('lastPath') || '/admin/profile';
+
+            // console.log(lastPath);
+
+            history.replace(lastPath);
         }
         // eslint-disable-next-line
-    }, [s_admin_auth])
+    }, [s_admin_auth]);
 
 
     const [userAdmin, setUserAdmin] = useState({
@@ -28,6 +32,7 @@ const AdminLogin = (props) => {
         error_message: null
     });
     const { error_message } = Error;
+
     const handleSumbit = (e) => {
         e.preventDefault();
         adminLogin(userAdmin);
@@ -72,10 +77,13 @@ const AdminLogin = (props) => {
                         name="password"
                         type="password" />
 
-                    <button type="submit" className="button-login">Iniciar Sesion</button>
+                    <button
+                        type="submit" className="button-login">
+                        Iniciar Sesion
+                    </button>
 
-                    {error_message ?
-                        <ErrorLabel message={error_message} /> : null}
+                    {error_message &&
+                        <ErrorLabel message={error_message} />}
                 </form>
             </div>
             <div className="info-login animate__animated animate__fadeInDown">
@@ -86,4 +94,4 @@ const AdminLogin = (props) => {
     )
 }
 
-export default AdminLogin
+export default AdminLogin;

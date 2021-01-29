@@ -1,17 +1,19 @@
 import React, { useContext, useEffect } from 'react'
-import '../login-admin-styles.scss';
+
 
 import CarContext from '../../cars/carsContext'
 import { Link } from 'react-router-dom';
 
 const VerVehiculos = () => {
+
     const carcontext = useContext(CarContext);
     const { cars, getCars } = carcontext;
+
     useEffect(() => {
         getCars();
         // eslint-disable-next-line
     }, []);
-    console.log(cars);
+
     return (
         <div className="container mt-5">
             <div className="row">
@@ -26,7 +28,6 @@ const VerVehiculos = () => {
 }
 
 
-
 const Car = ({ car }) => {
 
     return (
@@ -35,9 +36,9 @@ const Car = ({ car }) => {
             {car.status === 'nuevo' ?
                 <div class="item">
                     <span class="notify-badge">Nuevo</span>
-                    <img className="card-img-top" src={car.imageURL} alt="" />
+                    <img className="card-img-top" src={car.imageURL} alt={car.description} />
                 </div> :
-                <img src={car.imageURL} className="card-img-top" alt="" />
+                <img src={car.imageURL} className="card-img-top" alt={car.description} />
             }
 
             <div className="card-body">
@@ -50,12 +51,17 @@ const Car = ({ car }) => {
             </div>
             <div className="card-footer">
                 Año {car.model}
-                <Link className="btn btn-info" to={`/admin/vehiculos/${car.id}`}><i className="fa fa-pencil-square-o text-rigth" aria-hidden="true"></i>Editar</Link>
+                <Link
+                    className="btn btn-info"
+                    to={`/admin/vehiculos/${car.id}`}>
+                    <i
+                        className="fa fa-pencil-square-o text-rigth" aria-hidden="true"></i>
+                    Editar
+                </Link>
             </div>
         </div>
     )
 }
 
 
-
-export default VerVehiculos
+export default VerVehiculos;

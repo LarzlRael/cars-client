@@ -5,8 +5,6 @@ import './App.scss';
 
 import Header from './components/Header';
 import Layout from './components/Layout';
-// import Login from './components/login';
-// import Register from './components/register';
 import Cars from './components/cars';
 import CarState from './components/cars/carState';
 import Car_info from './components/car-info';
@@ -16,18 +14,18 @@ import AdminDashboard from './components/adminComponents/adminDashboard';
 
 //? rutas para proteger
 //import RutaUserPrivada from './private_rutes/PrivateUserRoutes';
-import PrivateAdminRoutes from './private_rutes/PrivateAdminRoutes';
-
 
 import tokenAuth from './config/token_auth';
-import PrivateUserRoutes from './private_rutes/PrivateUserRoutes';
+
 import CustomerState from './components/adminComponents/users_context/customerState';
 import Login from './components/login';
 import Register from './components/register';
 import { CARS, INICIO, LOGIN, REGISTER } from './routes/routes';
 import PayCar from './components/PayCar';
-
-
+import PrivateUserRoutes from './routes_user/private_routes/PrivateUserRoutes';
+import PrivateAdminRoutes from './routes_user/private_routes/PrivateAdminRoutes';
+import PublicRoutes from './routes_user/public_routes/PublicRoutes';
+import PublicAdminRoutes from './routes_user/public_routes/PublicAdminRoutes';
 
 
 const token = localStorage.getItem('token');
@@ -38,7 +36,6 @@ if (token) {
 let location = window.location.pathname;
 
 
-
 function App() {
   return (
     <LoginState>
@@ -47,12 +44,14 @@ function App() {
           <div className="App">
             <Router>
 
-              {!location.includes('/admin') ? <Header /> : null}
+              {!location.includes('/admin') && <Header />}
 
               <Route path='/' exact  >
                 <Redirect to={INICIO} />
               </Route>
 
+
+              <PublicRoutes path={INICIO} component={Layout} />
               <Route path={INICIO} exact component={Layout} />
 
               <Switch>
@@ -62,6 +61,7 @@ function App() {
 
               <Route path={LOGIN} component={Login} />
               <Route path={REGISTER} component={Register} />
+
               {/* //? Admin Routes */}
               <Switch>
                 {/* <Route path="/admin/dashboard" component={AdminDashboard} />
@@ -79,9 +79,12 @@ function App() {
                 <PrivateUserRoutes path="/payment-method" component={PayCar} />
 
 
-                <Route path="/admin" component={AdminLogin} />
+                <PublicAdminRoutes path="/admin" component={AdminLogin} />
 
                 <Route path="/loginadmin/new-car" component={AdminLogin} />
+
+                <Redirect to="/" />
+                
               </Switch>
 
 

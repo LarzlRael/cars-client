@@ -8,18 +8,24 @@ import React, { useEffect, useContext, useState } from 'react';
 import CustomerContext from '../users_context/customerContext';
 import googleImage from '../../../static/onlygoogle.png'
 
-//? Styles
-import "../login-admin-styles.scss";
 
 //? Icons
 import EditIcon from '@material-ui/icons/Edit';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
+import noprofilephoto from '../../../static/noprofilephoto.webp';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string'
 
 const primaryColor = '#01c8b3;';
 let size = 80;
 
-const ListClient = () => {
+const ListClient = ({ history }) => {
+
+    const location = useLocation();
+    const { client = '' } = queryString.parse(location.search);
+
+    const [query, setQuery] = useState({ query_search: client });
 
     const customerContext = useContext(CustomerContext);
     const {
@@ -36,7 +42,7 @@ const ListClient = () => {
         getCustomers(0, 5);
         // eslint-disable-next-line
     }, []);
-    const [query, setQuery] = useState({ query_search: '' });
+
 
     const onChange = (e) => {
         setQuery({
@@ -56,11 +62,9 @@ const ListClient = () => {
         from = from + 5;
         fields.push(item)
     }
-    // console.log('fields : ' + fields)
 
     const onChangeMultiple = (e) => {
         onChange(e);
-        searchCustomers(query_search);
     }
 
 
@@ -74,25 +78,37 @@ const ListClient = () => {
 
     const classes = useStyles();
 
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        history.push(`?client=${query_search}`)
+        searchCustomers(query_search);
+    }
+
     return (
         <div>
             <div className="search-customer">
-                <div className="container mt-3" ><h3>Listado de Clientes</h3></div>
-                <TextField
-                    id="standard-basic"
-                    label="Buscar Usuario"
+                <div className="container mt-3" >
+                    <h3>Listado de Clientes</h3>
+                </div>
 
-                    className="text-field-search"
-                    name="query_search"
-                    onChange={onChangeMultiple}
-                    inputProps={{ style: { fontFamily: 'roboto', color: primaryColor } }}
-                    value={query_search}
-                />
+                <form onSubmit={onSubmitHandler}>
+                    <TextField
+                        id="standard-basic"
+                        label="Buscar Usuario"
+                        className="text-field-search"
+                        name="query_search"
+                        onChange={onChangeMultiple}
+                        inputProps={{ style: { fontFamily: 'roboto', color: primaryColor } }}
+                        value={query_search}
+                    />
+                    <button type="submit" className="btn btn-primary">Buscar....</button>
+                </form>
             </div>
 
-            {cargando ? <CircularProgress size={size} /> : null}
 
-            {customers.length === 0 && !cargando ? <Alert severity="error">No se encontraron registros</Alert> : null}
+            {cargando && <CircularProgress size={size} />}
+
+            {customers.length === 0 && !cargando && <Alert severity="error">No se encontraron registros</Alert>}
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
@@ -114,10 +130,9 @@ const ListClient = () => {
                             <TableRow key={row.id_user}>
                                 <TableCell component="th" scope="row">
 
-                                    <img src={row.google === 1 ? row.image :
-                                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
+                                    <img src={row.google === 1 ? row.image : noprofilephoto}
                                         className="img"
-                                        alt="" />
+                                        alt={row.name} />
                                 </TableCell>
                                 <TableCell align="left">{row.email}</TableCell>
                                 <TableCell align="left">{row.name}</TableCell>
@@ -127,7 +142,7 @@ const ListClient = () => {
                                     <Tooltip title={row.google === 1 ? 'Este usuario puede autenticarse con google' : 'Este usuario no esta usando la autenticarse de google'}>
                                         <img src={googleImage}
                                             className={row.google === 1 ? "img" : "img2"}
-                                            alt="" />
+                                            alt={row.email} />
                                     </Tooltip>
                                 </TableCell>
                                 <TableCell align="left">

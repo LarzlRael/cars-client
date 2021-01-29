@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login';
 import { Link } from 'react-router-dom';
 
-import "./styles/login-register.scss"
 import LoginContext from './login/LoginContext';
 import ErrorLabel from './error-label';
 import { REGISTER } from '../routes/routes';
@@ -100,13 +99,13 @@ const Login = (props) => {
                         responseType='code,token'
                     />
                 </div>
+
                 <div className="message-button">
-                    <label htmlFor="" >¿No tienes Cuenta?</label> 
-                    <Link className="register" to={REGISTER}>Registrare ahora</Link>
+                    <label htmlFor="" >¿No tienes Cuenta?</label>
+                    <Link className="register-label-link" to={REGISTER}>Registrare ahora</Link>
                 </div>
 
-
-                {mensaje_login_error ? <ErrorLabel message={mensaje_login_error} /> : ''}
+                {mensaje_login_error && <ErrorLabel message={mensaje_login_error} />}
 
             </form>
         </div>

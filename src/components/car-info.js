@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
-import "./styles/cards-card.scss";
+
 import CarContext from './cars/carsContext'
 import LoginContext from './login/LoginContext';
 
@@ -32,7 +32,7 @@ const Car_info = (props) => {
         } else {
             history.push({
                 pathname: '/payment-method',
-                state: { price,id_car:id ,user}
+                state: { price, id_car: id, user }
             });
         }
     }
@@ -40,7 +40,7 @@ const Car_info = (props) => {
     return (
 
         <div className="one-card">
-            <img src={imageURL} alt="" />
+            <img src={imageURL} alt={description} />
             <div className="one-card-info">
                 <h2 className="one-card-info-title">{name_car}</h2>
                 <p className="one-card-info-desc"> {description}</p>
@@ -49,7 +49,7 @@ const Car_info = (props) => {
                 <h5>Marca : {maker}</h5>
                 <div className="price-buttons">
                     <h4 className="price">Precio : {price}</h4>
-                    <button onClick={()=>onClickListener(price)} className="btn btn-success"><i className="fas fa-shopping-cart"></i>Comprar</button>
+                    <button onClick={() => onClickListener(price)} className="btn btn-success"><i className="fas fa-shopping-cart"></i>Comprar</button>
                 </div>
             </div>
 

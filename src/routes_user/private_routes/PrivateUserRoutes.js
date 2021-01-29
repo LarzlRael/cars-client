@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 
-import LoginContext from '../components/login/LoginContext';
+import LoginContext from '../../components/login/LoginContext';
 
 const PrivateUserRoutes = ({ component: Component, ...props }) => {
 

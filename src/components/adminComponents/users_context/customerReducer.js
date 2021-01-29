@@ -4,8 +4,6 @@ import { GET_USERS, CLEAR_COSTUMERS, SEARCH_CUSTOMERS } from "../../../types";
 export default (state, action) => {
     switch (action.type) {
         case GET_USERS:
-            console.log(action.payload.resultado)
-
             return {
                 ...state,
 

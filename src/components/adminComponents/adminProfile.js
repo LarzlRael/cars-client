@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 
 import loginContext from '../login/LoginContext'
-import './login-admin-styles.scss';
 
 
 const AdminProfile = () => {
@@ -9,7 +8,7 @@ const AdminProfile = () => {
     const logincontext = useContext(loginContext);
 
     const { s_autenticado_admin } = logincontext;
-    console.log(s_autenticado_admin);
+
     return (
         <div className="container pt-4">
             <div className="row">
@@ -17,8 +16,15 @@ const AdminProfile = () => {
                     <div className="card">
 
                         <label htmlFor="file">
-                            <img src={s_autenticado_admin && s_autenticado_admin.image ? s_autenticado_admin.image : null} className="rounded-circle mx-auto d-block" alt="" width="200" height="200" />
-                            <input type="file" name={s_autenticado_admin && s_autenticado_admin.name ? s_autenticado_admin.name : null} id="file" />
+                            <img
+                                src={s_autenticado_admin && s_autenticado_admin.image && s_autenticado_admin.image} className="rounded-circle mx-auto d-block"
+                                width="200"
+                                height="200"
+                                alt="No file provided"
+                                />
+
+                            <input type="file"
+                                name={s_autenticado_admin && s_autenticado_admin.name && s_autenticado_admin.name} id="file" />
                         </label>
                         <div className="card-body">
                             <h6 className="text-center">
@@ -39,18 +45,21 @@ const AdminProfile = () => {
                                 <div className="form-group">
                                     <label htmlFor="">Informacion Basica</label>
 
-                                    <input type="email" className="form-control" value={s_autenticado_admin && s_autenticado_admin.email ? s_autenticado_admin.email : null} />
+                                    <input type="email" className="form-control" value={s_autenticado_admin && s_autenticado_admin.email && s_autenticado_admin.email} />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.name ? s_autenticado_admin.name : null} />
+                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.name && s_autenticado_admin.name} />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.last_name ? s_autenticado_admin.last_name : null} />
+                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.last_name && s_autenticado_admin.last_name} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="">Direccion</label>
-                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.direccion ? s_autenticado_admin.direccion : null} />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        value={s_autenticado_admin && s_autenticado_admin.direccion && s_autenticado_admin.direccion} />
                                 </div>
                                 <input type="submit" value="Editar Datos" className="btn btn-block btn-info" />
                             </form>

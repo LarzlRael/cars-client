@@ -24,7 +24,6 @@ const CustomerState = props => {
 
     const getCustomers = async (from, to) => {
 
-        console.log('desde ' + from + ' | hasta ' + to)
         dispatch({
             type: CLEAR_COSTUMERS,
             payload: []
@@ -32,10 +31,7 @@ const CustomerState = props => {
         try {
             const resultado = await clienteAxios.get(`/users/${from}/${to}`);
 
-            console.log(resultado.data.rows);
-
             let count = resultado.data.count[0].count;
-
             // console.log(count)
             dispatch({
                 type: GET_USERS,
@@ -64,7 +60,7 @@ const CustomerState = props => {
                 payload: { resultado: resultado.data.rows, count }
             })
 
-        } 
+        }
 
 
 

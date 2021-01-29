@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import "./styles/login-register.scss"
+
 
 import LoginContext from './login/LoginContext';
 import ErrorLabel from './error-label';
@@ -174,7 +174,7 @@ const Register = () => {
                         onChange={onChange}
                         value={password}
                         id="password" />
-                    {Error.password ? <ErrorLabel message={Error.password} /> : ''}
+                    {Error.password && <ErrorLabel message={Error.password} /> }
                 </div>
                 <div className="grupo-label">
                     <label htmlFor="password2">Repetir Contraseña</label>
@@ -192,11 +192,12 @@ const Register = () => {
                 </div>
                 <div className="message-button">
                     <label htmlFor="" >¿Ya tienes Cuenta?</label> <Link className="register" to="/login">Iniciar Sesion</Link>
-                    {mensaje ? <h4 className={registro_exitoso ? 'message-success' : 'error-message'}>{mensaje}
+                    {mensaje && <h4
+                        className={registro_exitoso ? 'message-success' : 'error-message'}>{mensaje}
                         {registro_exitoso ?
                             <i className="fas fa-check"></i> :
                             <i className="fas fa-times"></i>}
-                    </h4> : null}
+                    </h4>}
                 </div>
 
             </form>
