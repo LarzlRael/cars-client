@@ -8,7 +8,7 @@ import customerReducer from './customerReducer';
 
 import clienteAxios from '../../../config/axios';
 
-const CustomerState = props => {
+const CustomerState = (props) => {
 
     const initialState = {
         customers: [],

@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 //? context
 import CarContext from './carsContext';
 
-import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR, VIEW_CARS } from '../../types';
+import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR, VIEW_CARS, STAR_LOADING, STOP_LOADING } from '../../types';
 import carReducer from './carReducer';
 
 import clienteAxios from '../../config/axios';
@@ -17,7 +17,8 @@ const CarState = props => {
         carSelected: null,
         oneCar: [],
         cargando: false,
-        saleRecord: []
+        saleRecord: [],
+
 
 
     }
@@ -28,7 +29,7 @@ const CarState = props => {
 
         try {
             const resultado = await clienteAxios.get(`/getcarsinfo`);
-        
+
             dispatch({
                 type: GET_CARS,
                 payload: resultado.data.cars
@@ -87,24 +88,41 @@ const CarState = props => {
         form.append('model', car.model);
 
         try {
+
+            // dispatch({
+            //     type: STAR_LOADING,
+            // });
+
+            Swal.fire({
+                title: 'Subiendo imagen...',
+                text: 'Por favor espere...',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
             const sendData = await clienteAxios.post(`/new-image`, form);
             console.log(sendData);
+
+            // dispatch({
+            //     type: STOP_LOADING,
+            // });
+            dispatch({
+                type: NEW_CAR,
+            });
+
+            Swal.close();
+
             Swal.fire({
-                title: 'Nuevo Carro Agreado ',
+                title: `${car.name_car} Agregado `,
                 text: 'Agregado Correctamente',
                 icon: 'success',
                 confirmButtonText: 'Continuar'
             });
 
-            dispatch({
-                type: NEW_CAR,
-
-
-            });
-
         } catch (error) {
-
-
+            throw error;
         }
     }
     const viewSaleRecord = async () => {

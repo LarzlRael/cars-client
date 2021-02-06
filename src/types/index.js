@@ -31,6 +31,12 @@ export const CLEAR_COSTUMERS = 'CLEAR_COSTUMERS';
 
 export const SEARCH_CUSTOMERS = 'SEARCH_CUSTOMERS';
 
+export const STAR_LOADING = 'STAR_LOADING';
+export const STOP_LOADING = 'STAR_LOADING';
+
+export const FACEBOOK_LOGIN = 'FACEBOOK_LOGIN';
+
+
 
 
 

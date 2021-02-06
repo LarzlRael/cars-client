@@ -63,7 +63,6 @@ const AdminDashboard = () => {
                 </div>
                 <div className="dash-content">
 
-
                     <Switch>
                         <Route path="/admin/profile" component={AdminProfile} />
                         <Route path="/admin/users" component={AdminUsers} />

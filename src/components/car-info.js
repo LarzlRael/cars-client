@@ -5,7 +5,7 @@ import CarContext from './cars/carsContext'
 import LoginContext from './login/LoginContext';
 
 
-const Car_info = (props) => {
+const Car_info = ({match}) => {
 
     // console.log('location ',props.location.about);
     const carContext = useContext(CarContext);
@@ -17,7 +17,7 @@ const Car_info = (props) => {
     const { getOneCar, oneCar } = carContext;
     const { price, description, imageURL, name_car, model, status, maker } = oneCar;
     let mensaje;
-    const id = props.match.params.id;
+    const id = match.params.id;
 
     useEffect(() => {
         getOneCar(id);

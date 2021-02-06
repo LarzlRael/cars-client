@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 //? context
 import LoginContext from './LoginContext';
 
-import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER, REGISTER, REGISTER_FAIL, LOGIN_ADMIN_SUCCESS, GET_ADMIN_USER } from '../../types';
+import { GOOGLE_SIGN_IN, LOG_OUT, SIGN_IN_FAIL, SIGN_IN_SUCCESS, GET_USER, REGISTER, REGISTER_FAIL, LOGIN_ADMIN_SUCCESS, GET_ADMIN_USER, FACEBOOK_LOGIN } from '../../types';
 import loginReducer from './loginReducer';
 
 import clienteAxios from '../../config/axios';
@@ -42,6 +42,33 @@ const LoginState = (props) => {
 
             dispatch({
                 type: SIGN_IN_SUCCESS,
+                payload: resultado.data
+            });
+
+            authUser();
+
+        } catch (error) {
+
+            dispatch({
+                type: SIGN_IN_FAIL,
+                payload: error.response.data.error
+            });
+            Swal.fire({
+                title: 'Hubo un error',
+                text: error.response.data.error,
+                icon: 'error',
+                confirmButtonText: 'Reintentar'
+            });
+        }
+    }
+    const facebook_singin = async (user) => {
+
+
+        try {
+            const resultado = await clienteAxios.post('/login/facebookLogin', { email: user.email, name: user.name });
+
+            dispatch({
+                type: FACEBOOK_LOGIN,
                 payload: resultado.data
             });
 
@@ -199,7 +226,7 @@ const LoginState = (props) => {
 
             fauthUserAdmin();
 
-            
+
 
         } catch (error) {
             console.log(error)
@@ -227,6 +254,7 @@ const LoginState = (props) => {
                 //* funciones
                 sign_in,
                 google_singin,
+                facebook_singin,
                 cerrarSesion,
                 authUser,
                 register,

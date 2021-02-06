@@ -46,13 +46,13 @@ function App() {
 
               {!location.includes('/admin') && <Header />}
 
-              <Route path='/' exact  >
+              <Route exact path='/'   >
                 <Redirect to={INICIO} />
               </Route>
 
 
               <PublicRoutes path={INICIO} component={Layout} />
-              <Route path={INICIO} exact component={Layout} />
+              <Route path={INICIO} component={Layout} />
 
               <Switch>
                 <Route path="/cars/:id" component={Car_info} />
@@ -83,7 +83,7 @@ function App() {
 
                 <Route path="/loginadmin/new-car" component={AdminLogin} />
 
-                <Redirect to="/" />
+                {/* <Redirect to="/" /> */}
                 
               </Switch>
 

@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import LoginContext from './login/LoginContext';
 import ErrorLabel from './error-label';
 import { REGISTER } from '../routes/routes';
+import { LoginFacebbok } from './login/LoginFacebbok';
 
-const Login = (props) => {
+const Login = ({history}) => {
 
 
     const loginContext = useContext(LoginContext);
@@ -16,7 +17,7 @@ const Login = (props) => {
     useEffect(() => {
 
         if (autenticado) {
-            props.history.push('/cars');
+            history.push('/cars');
             window.location.reload();
         }
         // eslint-disable-next-line
@@ -99,7 +100,7 @@ const Login = (props) => {
                         responseType='code,token'
                     />
                 </div>
-
+                {/* <LoginFacebbok /> */}
                 <div className="message-button">
                     <label htmlFor="" >¿No tienes Cuenta?</label>
                     <Link className="register-label-link" to={REGISTER}>Registrare ahora</Link>
@@ -112,5 +113,5 @@ const Login = (props) => {
     )
 }
 
-export default Login
+export default Login;
 
