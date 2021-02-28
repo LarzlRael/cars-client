@@ -32,6 +32,7 @@ const PayCar = () => {
                 'Continuar!',
                 'success'
             );
+            reset();
             history.push('/cars');
         }
 

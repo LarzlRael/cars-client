@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useForm } from '../../hooks/useForm';
 
 import loginContext from '../login/LoginContext'
 
@@ -8,6 +9,14 @@ const AdminProfile = () => {
     const logincontext = useContext(loginContext);
 
     const { s_autenticado_admin } = logincontext;
+
+    const [form_values, handleInputChange] = useForm({
+        card_number: '',
+        mm: '',
+        yy: '',
+        cvc: ''
+    });
+    // const { card_number, mm, yy, cvc } = form_values;
 
     return (
         <div className="container pt-4">
@@ -21,7 +30,7 @@ const AdminProfile = () => {
                                 width="200"
                                 height="200"
                                 alt="No file provided"
-                                />
+                            />
 
                             <input type="file"
                                 name={s_autenticado_admin && s_autenticado_admin.name && s_autenticado_admin.name} id="file" />
@@ -45,19 +54,33 @@ const AdminProfile = () => {
                                 <div className="form-group">
                                     <label htmlFor="">Informacion Basica</label>
 
-                                    <input type="email" className="form-control" value={s_autenticado_admin && s_autenticado_admin.email && s_autenticado_admin.email} />
+                                    <input type="email"
+
+                                        name="email"
+                                        onChange={handleInputChange}
+                                        className="form-control" value={s_autenticado_admin && s_autenticado_admin.email && s_autenticado_admin.email} />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.name && s_autenticado_admin.name} />
+                                    <input type="text"
+                                        name="name"
+                                        onChange={handleInputChange}
+                                        className="form-control" value={s_autenticado_admin && s_autenticado_admin.name && s_autenticado_admin.name} />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={s_autenticado_admin && s_autenticado_admin.last_name && s_autenticado_admin.last_name} />
+                                    <input type="text"
+                                        name="last-name"
+                                        onChange={handleInputChange}
+                                        className="form-control" value=
+                                        {s_autenticado_admin && s_autenticado_admin.last_name && s_autenticado_admin.last_name} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="">Direccion</label>
                                     <input
                                         type="text"
+                                        name="direccion"
+                                        onChange={handleInputChange}
+
                                         className="form-control"
                                         value={s_autenticado_admin && s_autenticado_admin.direccion && s_autenticado_admin.direccion} />
                                 </div>

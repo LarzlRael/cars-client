@@ -7,14 +7,25 @@
     -webkit-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
     -moz-box-shadow: -2px 6px 9px 4px rgba(160, 145, 147, 1);
     box-shadow: -2px 6px 9px 1px rgba(160, 145, 147, 1);
+
+    @include media(sm) {
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+        margin-top: 1rem;
+    }
     .form {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
+        @include media(sm) {
+            height: 100vh;
+        }
+
         .formLogin {
             width: 100%;
-
+            padding: 2rem;
             .title {
                 text-align: center;
                 font-size: 2.2rem;
@@ -25,7 +36,7 @@
             }
             .input-login {
                 display: block;
-                width: 75%;
+                width: 100%;
                 margin: auto;
                 border: none;
                 border: 2px solid #ccc;
@@ -63,6 +74,10 @@
                     // background-color: $dash-title-color;
                     background-color: darken($color: $secondary-color, $amount: 15);
                 }
+                @include media(sm) {
+                    width: 100%;
+                    margin-bottom: 2rem;
+                }
             }
         }
     }
@@ -99,10 +114,30 @@
     grid-template-columns: 15% 1fr;
     grid-template-rows: 100vh;
     height: 100%;
-    .dash {
-        color: white;
-        background: $dash-background;
 
+    @include media(sm) {
+        grid-template-columns: 1fr;
+        position: relative;
+    }
+    .dash {
+        background: $dash-background;
+        color: white;
+        transition: 0.4s ease all;
+        &.open-menu {
+            // display: grid;
+            transform: translate(-150%);
+        }
+        &.close-menu {
+            // display: none;
+            transform: translate(0%);
+        }
+
+        @include media(sm) {
+            position: absolute;
+            z-index: 100;
+            width: 70%;
+            height: 100vh;
+        }
         .dash-group {
             padding-bottom: 1rem;
             .dash-item {
@@ -249,5 +284,29 @@ input[type="file"] {
             border-radius: 100%;
             border: 0.1rem solid black;
         }
+    }
+}
+
+.toolbar {
+    display: none;
+
+    @include media(sm) {
+        display: flex;
+    }
+
+    color: white;
+    width: 100%;
+    background-color: $dash-background;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+    .menu-bar {
+        padding: 5px;
+        font-size: 1.5rem;
+        transition: 0.3s all ease;
+    }
+    h4 {
+        font-size: 1.2em;
+        margin-left: 1rem;
+        text-transform: uppercase;
     }
 }

@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 //? context
 import CarContext from './carsContext';
 
-import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR, VIEW_CARS, STAR_LOADING, STOP_LOADING } from '../../types';
+import { GET_CARS, GET_ONE_CAR, FIND_CARS, NEW_CAR, VIEW_CARS } from '../../types';
 import carReducer from './carReducer';
 
 import clienteAxios from '../../config/axios';

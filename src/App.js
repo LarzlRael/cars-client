@@ -45,6 +45,7 @@ function App() {
             <Router>
 
               {!location.includes('/admin') && <Header />}
+              
 
               <Route exact path='/'   >
                 <Redirect to={INICIO} />

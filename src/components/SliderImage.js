@@ -28,7 +28,7 @@ const SliderImage = () => {
 const Item = ({ item: { description, image } }) => {
     return (
         <Paper className="slider_item">
-            <img className="image_slider animate__animated animate__fadeIn" src={image} alt={description} />
+            <img className="image_slider animate__animated animate__fadeIn image" src={image} alt={description} />
         </Paper >
     )
 }

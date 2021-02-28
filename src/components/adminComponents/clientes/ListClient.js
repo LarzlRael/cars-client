@@ -1,6 +1,8 @@
 import { CircularProgress, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Tooltip }
     from '@material-ui/core';
 
+import { v4 as uuidv4 } from 'uuid';
+
 
 import { Alert } from '@material-ui/lab';
 
@@ -17,7 +19,8 @@ import noprofilephoto from '../../../static/noprofilephoto.webp';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string'
 
-const primaryColor = '#01c8b3;';
+const primaryColor = '#01c8b3';
+
 let size = 80;
 
 const ListClient = ({ history }) => {
@@ -164,7 +167,7 @@ const ListClient = ({ history }) => {
 
             <div className="paginacion">
                 {fields.map(field => (
-                    <div className="fild-item">
+                    <div className="fild-item" key={uuidv4}>
                         <button className="active" onClick={
                             () => getCustomers(field.from, field.to)}>
                             {field.page_number}</button>

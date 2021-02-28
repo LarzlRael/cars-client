@@ -1,4 +1,6 @@
 import React, { useContext, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid';
+
 import ButtonUpdate from '../ButtonUpdate';
 import CarContext from '../cars/carsContext';
 
@@ -42,7 +44,7 @@ const AdminVentas = () => {
                             </tr>
                         </thead>
                         {saleRecord.map(sale => (
-                            <tr>
+                            <tr key={uuidv4()}>
                                 <td>{sale.name_car}</td>
                                 <td>{sale.email}</td>
                                 <td>{sale.name} {sale.last_name}</td>

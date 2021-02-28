@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-
+import { v4 as uuidv4 } from 'uuid';
 
 import CarContext from '../../cars/carsContext'
 import { Link } from 'react-router-dom';
@@ -18,7 +18,8 @@ const VerVehiculos = () => {
         <div className="container mt-5">
             <div className="row">
                 {cars.map(car => (
-                    <div className="col-md-4">
+                    <div key={uuidv4()}
+                        className="col-md-4">
                         <Car car={car} />
                     </div>
                 ))}
@@ -31,7 +32,7 @@ const VerVehiculos = () => {
 const Car = ({ car }) => {
 
     return (
-        <div classNames="card bg-primary">
+        <div className="card bg-primary">
 
             {car.status === 'nuevo' ?
                 <div className="item">

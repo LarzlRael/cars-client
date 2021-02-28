@@ -1,6 +1,10 @@
-
 .flex-item {
     display: flex;
+}
+
+.cars {
+    width: 100%;
+    margin-top: 3rem;
 }
 
 .cars-cards-container {
@@ -8,6 +12,9 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 3rem;
+    @include media(sm) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .card-car {
@@ -121,26 +128,32 @@
     display: flex;
     // justify-content: space-between;
     margin-bottom: 2rem;
+    flex-direction: row;
+    @include media(sm) {
+        flex-direction: column;
+    }
     .profile-info {
+        display: flex;
+
         img {
             width: 75px;
             height: 75px;
             border-radius: 100%;
         }
-    }
-    .search-input {
-        width: 70%;
-        margin: 0 1rem;
-        padding: 0.7rem;
-        align-self: center;
-        transition: 0.3s ease all;
-        border-radius: 10px;
-        border: 1px solid #000;
-        outline: none;
-        &:focus {
-            border: 1px solid $primary-color;
+        .search-input {
+            width: 70%;
+            margin: 0 1rem;
             padding: 0.7rem;
+            align-self: center;
+            transition: 0.3s ease all;
             border-radius: 10px;
+            border: 1px solid #000;
+            outline: none;
+            &:focus {
+                border: 1px solid $primary-color;
+                padding: 0.7rem;
+                border-radius: 10px;
+            }
         }
     }
     .select-search {

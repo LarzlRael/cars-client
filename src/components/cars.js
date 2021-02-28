@@ -54,14 +54,14 @@ const Cars = () => {
 
                     <div className="profile-info">
                         <img src={autenticado && user.image ? user.image : noprofilephoto} alt="" />
+                        <input type="text"
+                            className="search-input"
+                            name="query"
+                            placeholder="Buscar ...."
+                            value={query}
+                            onChange={onChangeMultiple} />
                     </div>
 
-                    <input type="text"
-                        className="search-input"
-                        name="query"
-                        placeholder="Buscar ...."
-                        value={query}
-                        onChange={onChangeMultiple} />
 
                     <select
                         className="select-search"

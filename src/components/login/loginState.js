@@ -19,16 +19,16 @@ const LoginState = (props) => {
 
         user: getUserFromLocalStorage,
         token: localStorage.getItem('token'),
-        autenticado: null,
-        mensaje: null,
-        mensaje_login_error: null,
+        autenticado: '',
+        mensaje: '',
+        mensaje_login_error: '',
         cargando: true,
         registro_exitoso: false,
 
         //? if admin is autenticaded is true 
-        s_admin_auth: null,
+        s_admin_auth: '',
         //? store for admin detaills
-        s_autenticado_admin: null,
+        s_autenticado_admin: '',
 
     }
     //? crear  el distpach y el state

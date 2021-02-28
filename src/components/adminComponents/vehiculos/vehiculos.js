@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
+
 import CarContext from '../../cars/carsContext';
-import validator from 'validator';
 
 import { marcas, status_car } from '../../data/CarData';
 
@@ -200,8 +201,8 @@ const Vehiculos = () => {
                                         className="form-control"
                                         onChange={(e) => onChangeBadge(e)}
                                     >
-                                        {marcas.map((marca, i) => (
-                                            <option key={i} value={marca.nombre_marca}>
+                                        {marcas.map((marca) => (
+                                            <option key={uuidv4()} value={marca.nombre_marca}>
                                                 {marca.nombre_marca}
                                             </option>
                                         ))}
@@ -229,7 +230,9 @@ const Vehiculos = () => {
                                     >
 
                                         {status_car.map(status => (
-                                            <option value={status.value}>
+                                            <option
+                                                key={uuidv4()}
+                                                value={status.value}>
                                                 {status.nombre}
                                             </option>
                                         ))}
